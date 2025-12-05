@@ -1518,7 +1518,263 @@ Skor(Aᵢ) = w_C1 × w_Aᵢ|C1 + w_C2 × w_Aᵢ|C2 + w_C3 × w_Aᵢ|C3 + w_C4 ×
 
                 <!-- Software -->
                 <div>
-                  <h5 class="font-semibold text-gray-900 mb-2">🖥️ Software & Tools</h5
+                  <h5 class="font-semibold text-gray-900 mb-2">🖥️ Software & Tools</h5                  <ul class="text-sm space-y-1 ml-4">
+                    <li>• <strong>Expert Choice</strong> - Software komersial profesional untuk AHP</li>
+                    <li>• <strong>Super Decisions</strong> - Free software untuk AHP dan ANP</li>
+                    <li>• <strong>Microsoft Excel</strong> - Template AHP tersedia gratis</li>
+                    <li>• <strong>Python (ahpy library)</strong> - Implementasi AHP untuk data science</li>
+                    <li>• <strong>R (ahp package)</strong> - Analisis AHP dalam R programming</li>
+                  </ul>
+                </div>
+
+                <!-- Online Resources -->
+                <div>
+                  <h5 class="font-semibold text-gray-900 mb-2">🌐 Sumber Online</h5>
+                  <ul class="text-sm space-y-1 ml-4">
+                    <li>• International Symposium on the Analytic Hierarchy Process (ISAHP)</li>
+                    <li>• Journal: <em>International Journal of the Analytic Hierarchy Process</em></li>
+                    <li>• Online calculators dan tools untuk pembelajaran</li>
+                    <li>• YouTube tutorials dan video pembelajaran</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- LATIHAN & QUIZ -->
+          <section class="section-card">
+            <div class="section-title">
+              <h3 class="text-xl font-bold text-gray-900">
+                ✏️ Latihan Pemahaman
+              </h3>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+              
+              <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-lg border-2 border-indigo-200 mb-4">
+                <h5 class="font-bold text-indigo-900 mb-3">🎯 Soal Latihan 1: Konsep Dasar</h5>
+                <div class="space-y-3 text-sm">
+                  <div>
+                    <p class="font-semibold mb-1">1. Apa yang dimaksud dengan Consistency Ratio (CR) dalam AHP?</p>
+                    <p class="text-xs text-gray-600 ml-4">Jawaban: CR mengukur konsistensi logika dalam penilaian perbandingan berpasangan. CR ≤ 0,1 menunjukkan penilaian konsisten dan dapat diterima.</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold mb-1">2. Jika kriteria A lebih penting dari B dengan nilai 5, berapakah nilai B terhadap A?</p>
+                    <p class="text-xs text-gray-600 ml-4">Jawaban: 1/5 = 0,2 (prinsip resiprokal)</p>
+                  </div>
+                  <div>
+                    <p class="font-semibold mb-1">3. Untuk matriks perbandingan 5×5, berapa jumlah perbandingan yang perlu dilakukan?</p>
+                    <p class="text-xs text-gray-600 ml-4">Jawaban: n(n-1)/2 = 5×4/2 = 10 perbandingan</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-r from-orange-50 to-yellow-50 p-4 rounded-lg border-2 border-orange-200 mb-4">
+                <h5 class="font-bold text-orange-900 mb-3">🎯 Soal Latihan 2: Studi Kasus Mini</h5>
+                <p class="text-sm mb-3">
+                  Anda harus memilih smartphone untuk bekerja dengan 3 alternatif: Samsung, iPhone, Xiaomi. 
+                  Kriteria: Performa (60%), Harga (30%), Desain (10%).
+                </p>
+                <div class="text-sm space-y-2">
+                  <p class="font-semibold">Bobot alternatif per kriteria:</p>
+                  <ul class="text-xs ml-4 space-y-1">
+                    <li>• Performa: Samsung (0,5), iPhone (0,4), Xiaomi (0,1)</li>
+                    <li>• Harga: Samsung (0,3), iPhone (0,1), Xiaomi (0,6)</li>
+                    <li>• Desain: Samsung (0,3), iPhone (0,6), Xiaomi (0,1)</li>
+                  </ul>
+                  <p class="font-semibold mt-2">Pertanyaan: Smartphone mana yang harus dipilih?</p>
+                  <details class="mt-2">
+                    <summary class="cursor-pointer text-orange-700 font-semibold text-xs">Klik untuk melihat solusi</summary>
+                    <div class="mt-2 bg-white p-3 rounded text-xs">
+                      <p class="font-semibold mb-1">Perhitungan:</p>
+                      <ul class="space-y-1 ml-2">
+                        <li>Samsung: 0,6×0,5 + 0,3×0,3 + 0,1×0,3 = 0,30 + 0,09 + 0,03 = <strong>0,42</strong></li>
+                        <li>iPhone: 0,6×0,4 + 0,3×0,1 + 0,1×0,6 = 0,24 + 0,03 + 0,06 = <strong>0,33</strong></li>
+                        <li>Xiaomi: 0,6×0,1 + 0,3×0,6 + 0,1×0,1 = 0,06 + 0,18 + 0,01 = <strong>0,25</strong></li>
+                      </ul>
+                      <p class="font-semibold mt-2 text-green-700">Jawaban: Samsung (skor 0,42) ✓</p>
+                    </div>
+                  </details>
+                </div>
+              </div>
+
+              <div class="info-box">
+                <h5 class="font-semibold text-blue-900 mb-2">💡 Tips Mengerjakan Soal AHP</h5>
+                <ul class="text-sm list-decimal list-inside ml-2 space-y-1">
+                  <li>Selalu periksa apakah total bobot = 1,00</li>
+                  <li>Perhatikan prinsip resiprokal dalam matriks</li>
+                  <li>Jangan lupa cek CR jika diminta</li>
+                  <li>Dalam sintesis, kalikan bobot kriteria dengan bobot alternatif</li>
+                  <li>Alternatif dengan skor tertinggi adalah pilihan terbaik</li>
+                </ul>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 mt-12">
+    <div class="container mx-auto px-4 md:px-6 py-8">
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div>
+          <h4 class="font-bold text-white mb-2">Denny Decision Lab</h4>
+          <p class="text-xs leading-relaxed">
+            Platform pembelajaran Sistem Pendukung Keputusan dan Multi Criteria Decision Making 
+            untuk mahasiswa, praktisi, dan peneliti.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-2">Modul Lainnya</h4>
+          <ul class="text-xs space-y-1">
+            <li><a href="#" class="hover:text-orange-400 transition">TOPSIS (Coming Soon)</a></li>
+            <li><a href="#" class="hover:text-orange-400 transition">SAW (Coming Soon)</a></li>
+            <li><a href="#" class="hover:text-orange-400 transition">ELECTRE (Coming Soon)</a></li>
+            <li><a href="#" class="hover:text-orange-400 transition">PROMETHEE (Coming Soon)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white mb-2">Kontak</h4>
+          <p class="text-xs mb-2">
+            Denny JC Sihombing<br>
+            Lecturer in Information Systems<br>
+            Atma Jaya Catholic University
+          </p>
+          <a href="https://dsihombing.github.io" class="text-orange-400 hover:text-orange-300 text-xs">
+            dsihombing.github.io →
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-6 pt-4 text-center text-xs">
+        <p>&copy; 2025 Denny Decision Lab. All rights reserved. | 
+          <a href="index.html" class="text-orange-400 hover:text-orange-300">Kembali ke Beranda</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Expand/collapse sections
+    document.querySelectorAll('.section-card').forEach(card => {
+      const title = card.querySelector('.section-title');
+      const content = card.querySelector('.section-content');
+      
+      if (title && content) {
+        title.addEventListener('click', () => {
+          const collapsed = card.classList.toggle('collapsed');
+          content.style.display = collapsed ? 'none' : 'block';
+        });
+      }
+    });
+
+    // Smooth scroll for TOC links
+    document.querySelectorAll('.toc-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Update active state
+          document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Highlight active section in TOC on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks = document.querySelectorAll('.toc-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Add animation on scroll for cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+      observer.observe(card);
+    });
+
+    // Print friendly
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('.section-card').forEach(card => {
+        card.classList.remove('collapsed');
+        const content = card.querySelector('.section-content');
+        if (content) content.style.display = 'block';
+      });
+    });
+
+  </script>
+
+</body>
+</html>
+
 
 
 
