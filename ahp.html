@@ -1023,6 +1023,257 @@ A3  [   3      1/3      1    ]
                     <tr><td>A3 (Gamma)</td><td>0,296</td></tr>
                   </tbody>
                 </table>
+              </div>
+
+              <!-- C3: Harga -->
+              <div class="bg-pink-50 p-4 rounded-lg mb-4 border-2 border-pink-200">
+                <h5 class="font-bold text-pink-900 mb-2">C3: Harga</h5>
+                <p class="text-sm mb-2">
+                  Penilaian berdasarkan penawaran harga (semakin murah semakin baik):
+                </p>
+                <ul class="text-xs list-disc list-inside ml-2 mb-2">
+                  <li>Gamma paling murah, diikuti Beta, lalu Alfa</li>
+                  <li>Gamma vs Alfa: Gamma <strong>lebih baik</strong> → Alfa vs Gamma = 1/5</li>
+                  <li>Gamma vs Beta: Gamma <strong>sedikit lebih baik</strong> → Beta vs Gamma = 1/3</li>
+                  <li>Beta vs Alfa: Beta <strong>sedikit lebih baik</strong> → Alfa vs Beta = 1/3</li>
+                </ul>
+
+                <div class="matrix-box text-xs mb-2">
+           A1      A2      A3
+A1  [   1      1/3     1/5   ]
+A2  [   3       1      1/3   ]
+A3  [   5       3       1    ]
+                </div>
+
+                <table class="text-xs">
+                  <thead>
+                    <tr><th>Alternatif</th><th>Bobot Lokal C3</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>A1 (Alfa)</td><td>0,082</td></tr>
+                    <tr><td>A2 (Beta)</td><td>0,260</td></tr>
+                    <tr><td>A3 (Gamma)</td><td class="bg-green-100 font-bold">0,658</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- C4: Rekam Jejak -->
+              <div class="bg-teal-50 p-4 rounded-lg mb-4 border-2 border-teal-200">
+                <h5 class="font-bold text-teal-900 mb-2">C4: Rekam Jejak & Reliabilitas</h5>
+                <p class="text-sm mb-2">
+                  Penilaian berdasarkan pengalaman dan referensi proyek sebelumnya:
+                </p>
+                <ul class="text-xs list-disc list-inside ml-2 mb-2">
+                  <li>Alfa memiliki pengalaman terpanjang dan paling banyak referensi</li>
+                  <li>Alfa vs Beta: Alfa <strong>sedikit lebih baik</strong> → 3</li>
+                  <li>Alfa vs Gamma: Alfa <strong>sangat lebih baik</strong> → 7</li>
+                  <li>Beta vs Gamma: Beta <strong>lebih baik</strong> → 5</li>
+                </ul>
+
+                <div class="matrix-box text-xs mb-2">
+           A1      A2      A3
+A1  [   1       3       7    ]
+A2  [  1/3      1       5    ]
+A3  [  1/7     1/5      1    ]
+                </div>
+
+                <table class="text-xs">
+                  <thead>
+                    <tr><th>Alternatif</th><th>Bobot Lokal C4</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>A1 (Alfa)</td><td class="bg-orange-100 font-bold">0,643</td></tr>
+                    <tr><td>A2 (Beta)</td><td>0,283</td></tr>
+                    <tr><td>A3 (Gamma)</td><td>0,074</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- MATRIKS RINGKASAN -->
+              <h5 class="font-semibold text-gray-900 mb-2 mt-5">📋 Matriks Ringkasan Bobot Lokal</h5>
+              <table class="mb-4">
+                <thead>
+                  <tr>
+                    <th>Alternatif</th>
+                    <th>C1<br>(0,558)</th>
+                    <th>C2<br>(0,264)</th>
+                    <th>C3<br>(0,122)</th>
+                    <th>C4<br>(0,057)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>A1 (Alfa)</strong></td>
+                    <td class="bg-orange-50">0,633</td>
+                    <td>0,122</td>
+                    <td>0,082</td>
+                    <td class="bg-orange-50">0,643</td>
+                  </tr>
+                  <tr>
+                    <td><strong>A2 (Beta)</strong></td>
+                    <td>0,260</td>
+                    <td class="bg-blue-50">0,582</td>
+                    <td>0,260</td>
+                    <td>0,283</td>
+                  </tr>
+                  <tr>
+                    <td><strong>A3 (Gamma)</strong></td>
+                    <td>0,106</td>
+                    <td>0,296</td>
+                    <td class="bg-green-50">0,658</td>
+                    <td>0,074</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="info-box text-sm">
+                <p><strong>Interpretasi matriks:</strong></p>
+                <ul class="list-disc list-inside ml-2 mt-1 space-y-1">
+                  <li>Alfa unggul di <strong>Kualitas (C1)</strong> dan <strong>Rekam Jejak (C4)</strong></li>
+                  <li>Beta unggul di <strong>Ketepatan Waktu (C2)</strong></li>
+                  <li>Gamma unggul di <strong>Harga (C3)</strong></li>
+                </ul>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- HASIL AKHIR -->
+          <section id="hasil" class="section-card">
+            <div class="section-title">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span class="step-number">7</span>
+                Sintesis Skor Global dan Keputusan Akhir
+              </h3>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+              
+              <h5 class="font-semibold text-gray-900 mb-2">Rumus Sintesis</h5>
+              <div class="formula-box mb-4">
+Skor Global(Aᵢ) = Σ [Bobot Kriteria × Bobot Alternatif di Kriteria]
+
+Skor(Aᵢ) = w_C1 × w_Aᵢ|C1 + w_C2 × w_Aᵢ|C2 + w_C3 × w_Aᵢ|C3 + w_C4 × w_Aᵢ|C4
+              </div>
+
+              <h5 class="font-semibold text-gray-900 mb-2">Perhitungan Detail</h5>
+              
+              <!-- Skor A1 -->
+              <div class="bg-orange-50 p-3 rounded-lg mb-3 border border-orange-200">
+                <h6 class="font-bold text-orange-900 mb-2">🔶 Skor A1 (Alfa)</h6>
+                <div class="formula-box text-sm">
+= 0,558 × 0,633 + 0,264 × 0,122 + 0,122 × 0,082 + 0,057 × 0,643
+= 0,353 + 0,032 + 0,010 + 0,037
+= 0,432
+                </div>
+              </div>
+
+              <!-- Skor A2 -->
+              <div class="bg-blue-50 p-3 rounded-lg mb-3 border border-blue-200">
+                <h6 class="font-bold text-blue-900 mb-2">🔷 Skor A2 (Beta)</h6>
+                <div class="formula-box text-sm">
+= 0,558 × 0,260 + 0,264 × 0,582 + 0,122 × 0,260 + 0,057 × 0,283
+= 0,145 + 0,154 + 0,032 + 0,016
+= 0,347
+                </div>
+              </div>
+
+              <!-- Skor A3 -->
+              <div class="bg-green-50 p-3 rounded-lg mb-4 border border-green-200">
+                <h6 class="font-bold text-green-900 mb-2">🔶 Skor A3 (Gamma)</h6>
+                <div class="formula-box text-sm">
+= 0,558 × 0,106 + 0,264 × 0,296 + 0,122 × 0,658 + 0,057 × 0,074
+= 0,059 + 0,078 + 0,080 + 0,004
+= 0,221
+                </div>
+              </div>
+
+              <!-- Tabel Hasil Akhir -->
+              <h5 class="font-semibold text-gray-900 mb-2">🏆 Hasil Akhir Ranking</h5>
+              <table class="mb-4">
+                <thead>
+                  <tr>
+                    <th>Peringkat</th>
+                    <th>Alternatif</th>
+                    <th>Skor Global</th>
+                    <th>Persentase</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-yellow-50">
+                    <td><span class="text-2xl">🥇</span></td>
+                    <td><strong>A1 - Supplier ALFA</strong></td>
+                    <td class="font-bold text-lg">0,432</td>
+                    <td>43,2%</td>
+                    <td><span class="badge badge-green">TERPILIH</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-2xl">🥈</span></td>
+                    <td><strong>A2 - Supplier BETA</strong></td>
+                    <td class="font-bold">0,347</td>
+                    <td>34,7%</td>
+                    <td><span class="badge badge-blue">Cadangan 1</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-2xl">🥉</span></td>
+                    <td><strong>A3 - Supplier GAMMA</strong></td>
+                    <td class="font-bold">0,221</td>
+                    <td>22,1%</td>
+                    <td><span class="badge badge-orange">Cadangan 2</span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Kesimpulan -->
+              <div class="success-box">
+                <h5 class="font-bold text-green-900 mb-2">✅ REKOMENDASI KEPUTUSAN</h5>
+                <p class="text-sm mb-3">
+                  Berdasarkan analisis AHP, <strong>Supplier ALFA</strong> dipilih sebagai 
+                  supplier utama untuk proyek konstruksi dengan skor global 0,432 (43,2%).
+                </p>
+                <p class="text-sm font-semibold mb-2">Justifikasi:</p>
+                <ul class="text-sm space-y-1 ml-4 list-disc">
+                  <li>Alfa memiliki <strong>kualitas material terbaik</strong> (bobot 55,8% dari total kriteria)</li>
+                  <li>Rekam jejak dan reliabilitas Alfa sangat kuat</li>
+                  <li>Meskipun bukan yang termurah atau tercepat, nilai keseluruhan Alfa paling optimal</li>
+                  <li>Selisih signifikan dengan Beta (8,5 poin) menunjukkan keputusan yang jelas</li>
+                </ul>
+              </div>
+
+              <div class="highlight-box mt-3">
+                <h5 class="font-semibold text-gray-900 mb-2">💡 Analisis Sensitivitas</h5>
+                <p class="text-sm">
+                  Jika manajemen memutuskan untuk memprioritaskan <strong>Harga (C3)</strong> dengan 
+                  bobot lebih tinggi (misalnya 30%), maka Gamma akan naik ke peringkat 2, tetapi 
+                  Alfa tetap menjadi pemenang karena keunggulan besar di Kualitas dan Rekam Jejak.
+                </p>
+                <p class="text-xs text-gray-600 mt-2">
+                  Ini menunjukkan robustness keputusan terhadap perubahan bobot kriteria.
+                </p>
+              </div>
+
+              <!-- Visualisasi Perbandingan -->
+              <h5 class="font-semibold text-gray-900 mb-2 mt-4">📊 Visualisasi Perbandingan Skor</h5>
+              <div class="space-y-2">
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="font-semibold">A1 - Alfa</span>
+                    <span class="font-bold text-orange-600">43,2%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-6">
+                    <div class="bg-gradient-to-r from-orange-400 to-orange-600 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style="width: 43.2%">
+                      0,432
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="font-semibold">A2 - Beta</span>
+                    <span class="font-bold text-blue-600">34,7%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-6">
+                    <div class="bg-gradient-to-r
 
 
 
