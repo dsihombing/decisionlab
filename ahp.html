@@ -800,6 +800,229 @@ CR = CI / RI
               <!-- Kriteria -->
               <h4 class="font-semibold text-gray-900 mb-2">Kriteria Evaluasi</h4>
               <div class="grid md:grid-cols-2 gap-3 mb-4">
-                <div class="bg-purple-50 p-
+                <div class="bg-purple-50 p-                <div class="bg-purple-50 p-3 rounded-lg border-2 border-purple-200">
+                  <h5 class="font-bold text-purple-900 mb-1">C1: Kualitas Material</h5>
+                  <p class="text-xs">Standar kualitas, sertifikasi, dan inspeksi material</p>
+                </div>
+                <div class="bg-indigo-50 p-3 rounded-lg border-2 border-indigo-200">
+                  <h5 class="font-bold text-indigo-900 mb-1">C2: Ketepatan Waktu Pengiriman</h5>
+                  <p class="text-xs">Track record on-time delivery dan manajemen logistik</p>
+                </div>
+                <div class="bg-pink-50 p-3 rounded-lg border-2 border-pink-200">
+                  <h5 class="font-bold text-pink-900 mb-1">C3: Harga</h5>
+                  <p class="text-xs">Total biaya, termasuk diskon volume dan payment terms</p>
+                </div>
+                <div class="bg-teal-50 p-3 rounded-lg border-2 border-teal-200">
+                  <h5 class="font-bold text-teal-900 mb-1">C4: Rekam Jejak & Reliabilitas</h5>
+                  <p class="text-xs">Pengalaman, referensi proyek, dan stabilitas perusahaan</p>
+                </div>
+              </div>
+
+              <!-- PERHITUNGAN KRITERIA -->
+              <h4 class="font-bold text-gray-900 mt-5 mb-3 text-lg border-t pt-3">
+                📊 Perhitungan Bobot Kriteria
+              </h4>
+
+              <p class="text-sm mb-3">
+                Tim manajemen proyek memberikan penilaian perbandingan berpasangan antar kriteria:
+              </p>
+
+              <div class="info-box text-sm mb-3">
+                <strong>Preferensi Manajemen:</strong>
+                <ul class="list-disc list-inside ml-2 mt-1 space-y-1">
+                  <li>Kualitas (C1) <strong>sedikit lebih penting</strong> dari Ketepatan Waktu (C2) → nilai <strong>3</strong></li>
+                  <li>Kualitas (C1) <strong>lebih penting</strong> dari Harga (C3) → nilai <strong>5</strong></li>
+                  <li>Kualitas (C1) <strong>sangat lebih penting</strong> dari Rekam Jejak (C4) → nilai <strong>7</strong></li>
+                  <li>Ketepatan Waktu (C2) <strong>sedikit lebih penting</strong> dari Harga (C3) → nilai <strong>3</strong></li>
+                  <li>Ketepatan Waktu (C2) <strong>lebih penting</strong> dari Rekam Jejak (C4) → nilai <strong>5</strong></li>
+                  <li>Harga (C3) <strong>sedikit lebih penting</strong> dari Rekam Jejak (C4) → nilai <strong>3</strong></li>
+                </ul>
+              </div>
+
+              <h5 class="font-semibold text-gray-900 mb-2">Matriks Perbandingan Kriteria (4×4)</h5>
+              <div class="matrix-box mb-3">
+           C1      C2      C3      C4
+C1  [   1       3       5       7    ]
+C2  [  1/3      1       3       5    ]
+C3  [  1/5     1/3      1       3    ]
+C4  [  1/7     1/5     1/3      1    ]
+              </div>
+
+              <h5 class="font-semibold text-gray-900 mb-2">Langkah Normalisasi</h5>
+              <p class="text-sm mb-2">Hitung jumlah tiap kolom:</p>
+              <div class="formula-box text-sm">
+Kolom C1: 1 + 1/3 + 1/5 + 1/7 ≈ 1 + 0,333 + 0,200 + 0,143 = 1,676
+Kolom C2: 3 + 1 + 1/3 + 1/5 ≈ 3 + 1 + 0,333 + 0,200 = 4,533
+Kolom C3: 5 + 3 + 1 + 1/3 ≈ 5 + 3 + 1 + 0,333 = 9,333
+Kolom C4: 7 + 5 + 3 + 1 = 16,000
+              </div>
+
+              <p class="text-sm mb-2 mt-3">Matriks ternormalisasi (setiap elemen dibagi total kolom):</p>
+              <table class="text-xs mb-3">
+                <thead>
+                  <tr>
+                    <th>Kriteria</th>
+                    <th>C1</th>
+                    <th>C2</th>
+                    <th>C3</th>
+                    <th>C4</th>
+                    <th>Rata-rata (Bobot)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>C1</strong></td>
+                    <td>0,597</td>
+                    <td>0,662</td>
+                    <td>0,536</td>
+                    <td>0,438</td>
+                    <td class="bg-orange-100 font-bold">0,558</td>
+                  </tr>
+                  <tr>
+                    <td><strong>C2</strong></td>
+                    <td>0,199</td>
+                    <td>0,221</td>
+                    <td>0,321</td>
+                    <td>0,313</td>
+                    <td class="bg-blue-100 font-bold">0,264</td>
+                  </tr>
+                  <tr>
+                    <td><strong>C3</strong></td>
+                    <td>0,119</td>
+                    <td>0,073</td>
+                    <td>0,107</td>
+                    <td>0,188</td>
+                    <td class="bg-green-100 font-bold">0,122</td>
+                  </tr>
+                  <tr>
+                    <td><strong>C4</strong></td>
+                    <td>0,085</td>
+                    <td>0,044</td>
+                    <td>0,036</td>
+                    <td>0,063</td>
+                    <td class="bg-purple-100 font-bold">0,057</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="success-box">
+                <h5 class="font-semibold text-green-900 mb-2">✅ Hasil Bobot Kriteria:</h5>
+                <ul class="text-sm space-y-1">
+                  <li>• <strong>C1 (Kualitas)</strong>: 0,558 atau 55,8% → Kriteria dominan</li>
+                  <li>• <strong>C2 (Ketepatan Waktu)</strong>: 0,264 atau 26,4% → Sangat penting</li>
+                  <li>• <strong>C3 (Harga)</strong>: 0,122 atau 12,2% → Penting</li>
+                  <li>• <strong>C4 (Rekam Jejak)</strong>: 0,057 atau 5,7% → Pelengkap</li>
+                </ul>
+                <p class="text-xs mt-2 text-gray-700">
+                  Total: 0,558 + 0,264 + 0,122 + 0,057 = 1,001 ≈ 1,00 ✓
+                </p>
+              </div>
+
+              <!-- UJI KONSISTENSI KRITERIA -->
+              <h5 class="font-semibold text-gray-900 mb-2 mt-4">Uji Konsistensi Kriteria</h5>
+              <p class="text-sm mb-2">Hitung λ<sub>max</sub> dengan metode A·W:</p>
+              
+              <div class="formula-box text-sm">
+# Kalikan matriks A dengan vektor bobot W
+Baris C1: 1(0,558) + 3(0,264) + 5(0,122) + 7(0,057) = 2,399
+Baris C2: (1/3)(0,558) + 1(0,264) + 3(0,122) + 5(0,057) = 1,117
+Baris C3: (1/5)(0,558) + (1/3)(0,264) + 1(0,122) + 3(0,057) = 0,512
+Baris C4: (1/7)(0,558) + (1/5)(0,264) + (1/3)(0,122) + 1(0,057) = 0,234
+
+# Hitung λᵢ = (A·W)ᵢ / wᵢ
+λ₁ = 2,399 / 0,558 = 4,300
+λ₂ = 1,117 / 0,264 = 4,231
+λ₃ = 0,512 / 0,122 = 4,197
+λ₄ = 0,234 / 0,057 = 4,105
+
+# λmax
+λmax = (4,300 + 4,231 + 4,197 + 4,105) / 4 = 4,208
+
+# CI (Consistency Index)
+CI = (λmax - n) / (n - 1) = (4,208 - 4) / 3 = 0,069
+
+# CR (Consistency Ratio)
+# Untuk n=4, RI=0,90
+CR = CI / RI = 0,069 / 0,90 = 0,077
+              </div>
+
+              <div class="success-box mt-3">
+                <p class="text-sm font-semibold text-green-900">
+                  ✅ CR = 0,077 < 0,1 → Konsistensi penilaian kriteria DAPAT DITERIMA
+                </p>
+                <p class="text-xs text-gray-700 mt-1">
+                  Matriks perbandingan kriteria memiliki konsistensi yang baik dan dapat digunakan 
+                  untuk analisis lanjutan.
+                </p>
+              </div>
+
+              <!-- PERHITUNGAN ALTERNATIF PER KRITERIA -->
+              <h4 class="font-bold text-gray-900 mt-6 mb-3 text-lg border-t pt-4">
+                🔍 Perhitungan Bobot Alternatif per Kriteria
+              </h4>
+
+              <!-- C1: Kualitas -->
+              <div class="bg-purple-50 p-4 rounded-lg mb-4 border-2 border-purple-200">
+                <h5 class="font-bold text-purple-900 mb-2">C1: Kualitas Material</h5>
+                <p class="text-sm mb-2">
+                  Penilaian berdasarkan hasil audit kualitas dan sertifikasi:
+                </p>
+                <ul class="text-xs list-disc list-inside ml-2 mb-2">
+                  <li>Alfa vs Beta: Alfa <strong>sedikit lebih baik</strong> → 3</li>
+                  <li>Alfa vs Gamma: Alfa <strong>lebih baik</strong> → 5</li>
+                  <li>Beta vs Gamma: Beta <strong>sedikit lebih baik</strong> → 3</li>
+                </ul>
+
+                <div class="matrix-box text-xs mb-2">
+           A1      A2      A3
+A1  [   1       3       5    ]
+A2  [  1/3      1       3    ]
+A3  [  1/5     1/3      1    ]
+                </div>
+
+                <p class="text-xs mb-1"><strong>Hasil normalisasi dan bobot:</strong></p>
+                <table class="text-xs">
+                  <thead>
+                    <tr><th>Alternatif</th><th>Bobot Lokal C1</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>A1 (Alfa)</td><td class="bg-orange-100 font-bold">0,633</td></tr>
+                    <tr><td>A2 (Beta)</td><td>0,260</td></tr>
+                    <tr><td>A3 (Gamma)</td><td>0,106</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- C2: Ketepatan Waktu -->
+              <div class="bg-indigo-50 p-4 rounded-lg mb-4 border-2 border-indigo-200">
+                <h5 class="font-bold text-indigo-900 mb-2">C2: Ketepatan Waktu Pengiriman</h5>
+                <p class="text-sm mb-2">
+                  Penilaian berdasarkan data historis on-time delivery:
+                </p>
+                <ul class="text-xs list-disc list-inside ml-2 mb-2">
+                  <li>Beta memiliki rekord ketepatan waktu terbaik</li>
+                  <li>Beta vs Alfa: Beta <strong>lebih baik</strong> → Alfa vs Beta = 1/5</li>
+                  <li>Beta vs Gamma: Beta <strong>sedikit lebih baik</strong> → 3</li>
+                  <li>Gamma vs Alfa: Gamma <strong>sedikit lebih baik</strong> → Alfa vs Gamma = 1/3</li>
+                </ul>
+
+                <div class="matrix-box text-xs mb-2">
+           A1      A2      A3
+A1  [   1      1/5     1/3   ]
+A2  [   5       1       3    ]
+A3  [   3      1/3      1    ]
+                </div>
+
+                <table class="text-xs">
+                  <thead>
+                    <tr><th>Alternatif</th><th>Bobot Lokal C2</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>A1 (Alfa)</td><td>0,122</td></tr>
+                    <tr><td>A2 (Beta)</td><td class="bg-blue-100 font-bold">0,582</td></tr>
+                    <tr><td>A3 (Gamma)</td><td>0,296</td></tr>
+                  </tbody>
+                </table>
+
 
 
