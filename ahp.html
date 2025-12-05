@@ -289,4 +289,261 @@
                 <ol class="list-decimal list-inside space-y-1 text-sm">
                   <li><strong>Decomposition</strong> – memecah masalah kompleks menjadi hierarki elemen-elemen.</li>
                   <li><strong>Comparative Judgement</strong> – membandingkan elemen secara berpasangan.</li>
-                  <li><strong>Synthesis of Priority</strong> – menggabung
+                  <li><strong>Synthesis of Priority</strong> – menggabung                <ol class="list-decimal list-inside space-y-1 text-sm">
+                  <li><strong>Decomposition</strong> – memecah masalah kompleks menjadi hierarki elemen-elemen.</li>
+                  <li><strong>Comparative Judgement</strong> – membandingkan elemen secara berpasangan.</li>
+                  <li><strong>Synthesis of Priority</strong> – menggabungkan bobot untuk mendapatkan prioritas global.</li>
+                  <li><strong>Consistency Verification</strong> – memastikan penilaian logis dan konsisten.</li>
+                </ol>
+              </div>
+
+              <p class="mt-3 mb-2">
+                AHP banyak diterapkan dalam berbagai bidang seperti:
+              </p>
+              <ul class="list-disc list-inside space-y-1 ml-4 text-sm">
+                <li>Pemilihan supplier dan vendor (supply chain management)</li>
+                <li>Evaluasi dan seleksi proyek investasi</li>
+                <li>Penilaian kinerja karyawan dan organisasi</li>
+                <li>Pemilihan lokasi fasilitas atau kantor</li>
+                <li>Prioritisasi fitur produk dalam pengembangan software</li>
+                <li>Pengambilan keputusan strategis di berbagai sektor</li>
+              </ul>
+
+              <div class="highlight-box mt-3">
+                <p class="text-sm font-semibold text-gray-900">
+                  💡 Keunggulan utama: AHP tidak hanya memberikan ranking alternatif, 
+                  tetapi juga mengukur tingkat konsistensi logika pengambil keputusan melalui 
+                  Consistency Ratio (CR).
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. Hierarki -->
+          <section id="hierarki" class="section-card">
+            <div class="section-title">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span class="step-number">2</span>
+                Struktur Hierarki Keputusan
+              </h3>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+              <p class="mb-3">
+                Hierarki AHP menyusun masalah keputusan dari yang paling umum (tujuan) 
+                hingga elemen paling spesifik (alternatif). Struktur standar terdiri dari:
+              </p>
+
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <div class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">Level 0</div>
+                    <div class="flex-1 bg-white p-2 rounded shadow-sm border border-blue-300">
+                      <p class="font-bold text-blue-900">🎯 Tujuan (Goal)</p>
+                      <p class="text-xs text-gray-600">Apa yang ingin dicapai</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center gap-3">
+                    <div class="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">Level 1</div>
+                    <div class="flex-1 bg-white p-2 rounded shadow-sm border border-orange-300">
+                      <p class="font-bold text-orange-900">📊 Kriteria (Criteria)</p>
+                      <p class="text-xs text-gray-600">Aspek-aspek yang dipertimbangkan</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <div class="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold">Level 2</div>
+                    <div class="flex-1 bg-white p-2 rounded shadow-sm border border-purple-300">
+                      <p class="font-bold text-purple-900">📋 Subkriteria (Subcriteria)</p>
+                      <p class="text-xs text-gray-600">Rincian kriteria (opsional)</p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <div class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">Level 3</div>
+                    <div class="flex-1 bg-white p-2 rounded shadow-sm border border-green-300">
+                      <p class="font-bold text-green-900">✅ Alternatif (Alternatives)</p>
+                      <p class="text-xs text-gray-600">Pilihan yang akan dievaluasi</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-sm mb-3">
+                <strong>Contoh konkret hierarki pemilihan laptop:</strong>
+              </p>
+
+              <div class="matrix-box text-xs">
+Tujuan: Memilih laptop terbaik untuk data science
+  │
+  ├─ Kriteria 1: Performa (CPU, RAM, GPU)
+  ├─ Kriteria 2: Harga
+  ├─ Kriteria 3: Portabilitas (berat, ukuran)
+  └─ Kriteria 4: Daya tahan baterai
+       │
+       ├─ Alternatif A: Laptop X
+       ├─ Alternatif B: Laptop Y
+       └─ Alternatif C: Laptop Z
+              </div>
+
+              <div class="info-box mt-3">
+                <p class="text-sm">
+                  <strong>Catatan penting:</strong> Jumlah level dapat disesuaikan dengan kompleksitas 
+                  masalah. Untuk masalah sederhana cukup 3 level (tujuan-kriteria-alternatif), 
+                  sementara masalah kompleks bisa memiliki beberapa tingkat subkriteria.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. Skala Saaty -->
+          <section id="skala" class="section-card">
+            <div class="section-title">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span class="step-number">3</span>
+                Skala Perbandingan Saaty (1–9)
+              </h3>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+              <p class="mb-3">
+                Dalam AHP, perbandingan antar elemen dilakukan menggunakan skala fundamental 
+                yang dikembangkan oleh Saaty. Skala ini menunjukkan intensitas kepentingan 
+                relatif satu elemen terhadap elemen lain.
+              </p>
+
+              <table class="mb-4">
+                <thead>
+                  <tr>
+                    <th>Intensitas</th>
+                    <th>Definisi</th>
+                    <th>Penjelasan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="badge badge-green">1</span></td>
+                    <td>Sama penting</td>
+                    <td>Kedua elemen sama pentingnya</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-blue">3</span></td>
+                    <td>Sedikit lebih penting</td>
+                    <td>Pengalaman dan penilaian sedikit memihak satu elemen</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-blue">5</span></td>
+                    <td>Lebih penting</td>
+                    <td>Pengalaman dan penilaian kuat memihak satu elemen</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-orange">7</span></td>
+                    <td>Sangat lebih penting</td>
+                    <td>Satu elemen sangat disukai dan dominasinya terlihat dalam praktik</td>
+                  </tr>
+                  <tr>
+                    <td><span class="badge badge-orange">9</span></td>
+                    <td>Mutlak lebih penting</td>
+                    <td>Bukti yang mendukung satu elemen atas yang lain memiliki tingkat penegasan tertinggi</td>
+                  </tr>
+                  <tr>
+                    <td>2, 4, 6, 8</td>
+                    <td>Nilai tengah</td>
+                    <td>Digunakan bila diperlukan kompromi antara dua penilaian yang berdekatan</td>
+                  </tr>
+                  <tr>
+                    <td>Kebalikan</td>
+                    <td>1/3, 1/5, 1/7, 1/9</td>
+                    <td>Jika A lebih penting dari B dengan nilai <em>x</em>, maka B terhadap A = 1/<em>x</em></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="highlight-box">
+                <h4 class="font-semibold text-gray-900 mb-2">Contoh Penggunaan Skala:</h4>
+                <ul class="text-sm space-y-1">
+                  <li>• Jika Kualitas <strong>lebih penting</strong> dari Harga dengan nilai <strong>5</strong>, 
+                    maka Harga terhadap Kualitas bernilai <strong>1/5 = 0,2</strong>.</li>
+                  <li>• Jika Performa <strong>sangat lebih penting</strong> dari Portabilitas dengan nilai <strong>7</strong>, 
+                    maka Portabilitas terhadap Performa bernilai <strong>1/7 ≈ 0,14</strong>.</li>
+                </ul>
+              </div>
+
+              <div class="info-box mt-3">
+                <p class="text-sm">
+                  <strong>Prinsip Resiprokal:</strong> Matriks perbandingan berpasangan AHP bersifat resiprokal 
+                  (a<sub>ij</sub> = 1/a<sub>ji</sub>) dan diagonal utamanya selalu bernilai 1 
+                  (setiap elemen sama penting dengan dirinya sendiri).
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. Langkah Perhitungan -->
+          <section id="langkah" class="section-card">
+            <div class="section-title">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span class="step-number">4</span>
+                Langkah-Langkah Perhitungan AHP
+              </h3>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+              <p class="mb-4">
+                Berikut adalah prosedur sistematis untuk melakukan analisis AHP:
+              </p>
+
+              <div class="space-y-4">
+                <!-- Step 1 -->
+                <div class="bg-orange-50 border-l-4 border-orange-500 p-4 rounded-r-lg">
+                  <h4 class="font-bold text-orange-900 mb-2">Langkah 1: Definisi Masalah & Hierarki</h4>
+                  <p class="text-sm mb-2">
+                    Identifikasi tujuan keputusan, kriteria yang relevan, subkriteria (jika ada), 
+                    dan alternatif yang akan dievaluasi. Susun dalam struktur hierarki.
+                  </p>
+                  <div class="formula-box text-xs">
+Contoh:
+Tujuan: Memilih supplier terbaik
+Kriteria: Kualitas, Harga, Delivery, Layanan
+Alternatif: Supplier A, B, C
+                  </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                  <h4 class="font-bold text-blue-900 mb-2">Langkah 2: Penyusunan Matriks Perbandingan Berpasangan</h4>
+                  <p class="text-sm mb-2">
+                    Untuk setiap level hierarki, buat matriks perbandingan berpasangan menggunakan 
+                    skala Saaty. Matriks berukuran n×n untuk n elemen.
+                  </p>
+                  <div class="formula-box">
+A = [a<sub>ij</sub>]<sub>n×n</sub>
+
+di mana:
+a<sub>ii</sub> = 1 (diagonal)
+a<sub>ji</sub> = 1/a<sub>ij</sub> (resiprokal)
+                  </div>
+                  <p class="text-xs text-gray-600 mt-2">
+                    Contoh: Jika ada 4 kriteria, maka perlu matriks 4×4 = 16 elemen, 
+                    tetapi hanya perlu mengisi 6 perbandingan (karena sifat simetris dan diagonal).
+                  </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-r-lg">
+                  <h4 class="font-bold text-purple-900 mb-2">Langkah 3: Normalisasi Matriks</h4>
+                  <p class="text-sm mb-2">
+                    Hitung jumlah setiap kolom, lalu bagi setiap elemen dengan total kolomnya 
+                    untuk mendapatkan matriks ternormalisasi.
+                  </p>
+                  <div class="formula-box">
+Jumlah kolom j: S<sub>j</sub> = Σ<sub>i</sub> a<sub>ij</sub>
+
+Elemen ternormalisasi: n<sub>ij</sub> = a<sub>ij</sub> / S<sub>j</sub>
+                  </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-green-50
+
