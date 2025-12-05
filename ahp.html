@@ -545,5 +545,261 @@ Elemen ternormalisasi: n<sub>ij</sub> = a<sub>ij</sub> / S<sub>j</sub>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="bg-green-50
+                <div class="bg-green-50                <!-- Step 4 -->
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                  <h4 class="font-bold text-green-900 mb-2">Langkah 4: Menghitung Bobot Prioritas (Eigenvector)</h4>
+                  <p class="text-sm mb-2">
+                    Hitung rata-rata setiap baris dari matriks ternormalisasi untuk mendapatkan 
+                    vektor bobot (eigenvector pendekatan).
+                  </p>
+                  <div class="formula-box">
+w<sub>i</sub> = (Σ<sub>j</sub> n<sub>ij</sub>) / n
+
+di mana n = jumlah elemen yang dibandingkan
+                  </div>
+                  <p class="text-xs text-gray-600 mt-2">
+                    Hasil: Vektor bobot W = [w₁, w₂, ..., w<sub>n</sub>]ᵀ dengan Σw<sub>i</sub> = 1
+                  </p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
+                  <h4 class="font-bold text-red-900 mb-2">Langkah 5: Uji Konsistensi</h4>
+                  <p class="text-sm mb-2">
+                    Hitung Consistency Index (CI) dan Consistency Ratio (CR) untuk memastikan 
+                    penilaian logis dan dapat diterima.
+                  </p>
+                  <div class="formula-box">
+λ<sub>max</sub> = rata-rata dari (A·W)<sub>i</sub> / w<sub>i</sub>
+
+CI = (λ<sub>max</sub> - n) / (n - 1)
+
+CR = CI / RI
+
+Kriteria: CR ≤ 0,1 (konsisten)
+           CR > 0,1 (perlu revisi penilaian)
+                  </div>
+                  <p class="text-xs text-gray-600 mt-2">
+                    RI (Random Index) adalah konstanta yang bergantung pada ukuran matriks n.
+                  </p>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-r-lg">
+                  <h4 class="font-bold text-indigo-900 mb-2">Langkah 6: Sintesis Bobot Global</h4>
+                  <p class="text-sm mb-2">
+                    Kalikan bobot kriteria dengan bobot alternatif di setiap kriteria untuk 
+                    mendapatkan skor global setiap alternatif.
+                  </p>
+                  <div class="formula-box">
+Skor Global(A<sub>i</sub>) = Σ<sub>k=1</sub><sup>m</sup> w<sub>kriteria_k</sub> × w<sub>A<sub>i</sub>|kriteria_k</sub>
+
+di mana m = jumlah kriteria
+                  </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                  <h4 class="font-bold text-yellow-900 mb-2">Langkah 7: Ranking dan Keputusan</h4>
+                  <p class="text-sm mb-2">
+                    Urutkan alternatif berdasarkan skor global dari tertinggi ke terendah. 
+                    Alternatif dengan skor tertinggi adalah pilihan terbaik.
+                  </p>
+                  <div class="success-box text-sm">
+                    <strong>Output akhir:</strong> Ranking alternatif dengan justifikasi numerik 
+                    yang dapat dipertanggungjawabkan dan konsisten secara logis.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. Uji Konsistensi -->
+          <section id="konsistensi" class="section-card">
+            <div class="section-title">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span class="step-number">5</span>
+                Uji Konsistensi (Consistency Ratio)
+              </h3>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+              <p class="mb-3">
+                Salah satu kekuatan AHP adalah kemampuannya mengukur konsistensi logika 
+                dalam penilaian. Manusia tidak selalu konsisten dalam memberikan penilaian, 
+                dan AHP menyediakan mekanisme untuk mendeteksi inkonsistensi tersebut.
+              </p>
+
+              <h4 class="font-semibold text-gray-900 mb-2">Konsep Konsistensi</h4>
+              <p class="text-sm mb-3">
+                Konsistensi berarti jika A lebih penting dari B, dan B lebih penting dari C, 
+                maka secara logis A harus lebih penting dari C dengan proporsi yang konsisten. 
+                Contoh:
+              </p>
+
+              <div class="info-box text-sm">
+                <p class="mb-1"><strong>Konsisten:</strong></p>
+                <ul class="list-disc list-inside ml-2 space-y-1">
+                  <li>A vs B = 3 (A sedikit lebih penting)</li>
+                  <li>B vs C = 3 (B sedikit lebih penting)</li>
+                  <li>A vs C = 9 (A mutlak lebih penting) ✓</li>
+                </ul>
+                <p class="mt-2 mb-1"><strong>Tidak Konsisten:</strong></p>
+                <ul class="list-disc list-inside ml-2 space-y-1">
+                  <li>A vs B = 5 (A lebih penting)</li>
+                  <li>B vs C = 5 (B lebih penting)</li>
+                  <li>A vs C = 3 (A sedikit lebih penting) ✗</li>
+                </ul>
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-4 mb-2">Rumus Perhitungan CR</h4>
+              
+              <div class="formula-box">
+# Langkah 1: Hitung vektor A·W
+Hasil = A × W (perkalian matriks dengan vektor bobot)
+
+# Langkah 2: Hitung λ untuk setiap elemen
+λ<sub>i</sub> = (A·W)<sub>i</sub> / w<sub>i</sub>
+
+# Langkah 3: Hitung λ<sub>max</sub>
+λ<sub>max</sub> = (Σ λ<sub>i</sub>) / n
+
+# Langkah 4: Hitung Consistency Index
+CI = (λ<sub>max</sub> - n) / (n - 1)
+
+# Langkah 5: Hitung Consistency Ratio
+CR = CI / RI
+              </div>
+
+              <h4 class="font-semibold text-gray-900 mt-4 mb-2">Tabel Random Index (RI)</h4>
+              <table class="mb-4">
+                <thead>
+                  <tr>
+                    <th>n (ukuran matriks)</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>RI</strong></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0,58</td>
+                    <td>0,90</td>
+                    <td>1,12</td>
+                    <td>1,24</td>
+                    <td>1,32</td>
+                    <td>1,41</td>
+                    <td>1,45</td>
+                    <td>1,49</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="highlight-box">
+                <h4 class="font-semibold text-gray-900 mb-2">Interpretasi CR:</h4>
+                <ul class="text-sm space-y-1">
+                  <li>• <strong>CR ≤ 0,1 (10%)</strong> → Konsistensi dapat diterima ✓</li>
+                  <li>• <strong>0,1 < CR ≤ 0,2</strong> → Konsistensi marginal (perlu review)</li>
+                  <li>• <strong>CR > 0,2</strong> → Inkonsistensi serius, harus revisi penilaian ✗</li>
+                </ul>
+              </div>
+
+              <div class="info-box mt-3">
+                <p class="text-sm">
+                  <strong>Catatan praktis:</strong> Untuk matriks 3×3 dan 4×4, toleransi CR=0,1 
+                  cukup ketat. Beberapa praktisi menggunakan CR≤0,15 untuk matriks lebih besar 
+                  dari 5×5, namun idealnya tetap berusaha mencapai CR≤0,1.
+                </p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- BAGIAN STUDI KASUS -->
+        <div id="kasus" class="mb-6 mt-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-blue-600">🔬</span> Studi Kasus Lengkap
+          </h2>
+
+          <!-- Kasus Supplier -->
+          <section id="kasus-supplier" class="section-card">
+            <div class="section-title">
+              <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <span class="step-number">6</span>
+                Studi Kasus: Pemilihan Supplier Konstruksi
+              </h3>
+              <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+              
+              <!-- Konteks Masalah -->
+              <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
+                <h4 class="font-bold text-blue-900 mb-2">📋 Konteks Masalah</h4>
+                <p class="text-sm mb-3">
+                  PT Konstruksi Nusantara sedang merencanakan pembangunan gedung perkantoran 
+                  15 lantai dengan nilai proyek Rp 50 miliar. Perusahaan perlu memilih 
+                  <strong>satu supplier utama</strong> untuk memasok material konstruksi utama 
+                  (beton, baja, dan finishing).
+                </p>
+                <div class="grid md:grid-cols-2 gap-3 text-sm">
+                  <div class="bg-white p-3 rounded border border-blue-200">
+                    <p class="font-semibold text-blue-900 mb-1">🎯 Tujuan:</p>
+                    <p>Memilih supplier konstruksi yang memberikan <em>nilai terbaik</em> 
+                    secara keseluruhan (bukan hanya termurah).</p>
+                  </div>
+                  <div class="bg-white p-3 rounded border border-blue-200">
+                    <p class="font-semibold text-blue-900 mb-1">⏱️ Deadline:</p>
+                    <p>Keputusan harus diambil dalam 2 minggu untuk menjaga jadwal proyek.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Alternatif -->
+              <h4 class="font-semibold text-gray-900 mb-2">Alternatif Supplier</h4>
+              <div class="grid md:grid-cols-3 gap-3 mb-4">
+                <div class="bg-orange-50 p-3 rounded-lg border-2 border-orange-200">
+                  <h5 class="font-bold text-orange-900 mb-1">A1: Supplier ALFA</h5>
+                  <ul class="text-xs space-y-1">
+                    <li>• Perusahaan besar, 20 tahun</li>
+                    <li>• Kualitas premium</li>
+                    <li>• Harga kompetitif tinggi</li>
+                    <li>• Track record sangat baik</li>
+                  </ul>
+                </div>
+                <div class="bg-blue-50 p-3 rounded-lg border-2 border-blue-200">
+                  <h5 class="font-bold text-blue-900 mb-1">A2: Supplier BETA</h5>
+                  <ul class="text-xs space-y-1">
+                    <li>• Perusahaan menengah, 10 tahun</li>
+                    <li>• Kualitas baik</li>
+                    <li>• Tepat waktu ekselen</li>
+                    <li>• Harga moderat</li>
+                  </ul>
+                </div>
+                <div class="bg-green-50 p-3 rounded-lg border-2 border-green-200">
+                  <h5 class="font-bold text-green-900 mb-1">A3: Supplier GAMMA</h5>
+                  <ul class="text-xs space-y-1">
+                    <li>• Perusahaan baru, 5 tahun</li>
+                    <li>• Kualitas standar</li>
+                    <li>• Harga sangat kompetitif</li>
+                    <li>• Pengalaman terbatas</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Kriteria -->
+              <h4 class="font-semibold text-gray-900 mb-2">Kriteria Evaluasi</h4>
+              <div class="grid md:grid-cols-2 gap-3 mb-4">
+                <div class="bg-purple-50 p-
+
 
