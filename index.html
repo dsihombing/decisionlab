@@ -3,492 +3,254 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denny Decision Lab – AHP Playground</title>
+  <title>Denny Decision Lab – MCDM Learning Hub</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="https://placehold.co/32x32/f97316/ffffff?text=DL" type="image/png">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .hover-lift {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%);
     }
-    .hover-lift:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -5px rgba(15,23,42,0.15);
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .card {
-      background: #ffffff;
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
-      margin: 0.75rem 0;
-      box-shadow: 0 1px 4px rgba(15,23,42,0.08);
+    
+    .method-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
     }
-    .card-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
+    
+    .method-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      border-color: #f97316;
     }
-    .toggle-icon {
-      font-size: 1.1rem;
-      color: #6b7280;
-      transition: transform 0.2s ease;
-    }
-    .card.collapsed .toggle-icon {
-      transform: rotate(-90deg);
-    }
-    .card-content {
-      margin-top: 0.75rem;
-    }
-    .formula {
-      background: #111827;
-      color: #e5e7eb;
-      font-family: "JetBrains Mono","Fira Code",monospace;
-      padding: 0.45rem 0.65rem;
-      border-radius: 0.5rem;
-      font-size: 0.85rem;
-      display: inline-block;
-      margin: 0.15rem 0;
-      white-space: pre-wrap;
-    }
-    th, td {
-      border: 1px solid #e5e7eb;
-      padding: 0.35rem 0.5rem;
-      text-align: center;
-      font-size: 0.88rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0.5rem 0;
-    }
-    th {
-      background: #f9fafb;
-      cursor: pointer;
+    
+    .nav-link {
       position: relative;
+      transition: color 0.3s ease;
     }
-    th span.sort-indicator {
-      font-size: 0.7rem;
-      color: #9ca3af;
-      margin-left: 4px;
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #f97316;
+      transition: width 0.3s ease;
     }
-    .pill {
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .badge {
       display: inline-block;
-      padding: 0.15rem 0.5rem;
+      padding: 0.25rem 0.75rem;
       border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .badge-new {
       background: #ecfdf5;
       color: #047857;
-      font-size: 0.75rem;
     }
-    .highlight {
-      background: #fffbeb;
-      border-left: 3px solid #fbbf24;
-      padding: 0.4rem 0.6rem;
-      border-radius: 0.4rem;
-      font-size: 0.9rem;
-      margin: 0.4rem 0;
+    
+    .badge-popular {
+      background: #fef3c7;
+      color: #b45309;
+    }
+    
+    .badge-advanced {
+      background: #e0e7ff;
+      color: #4338ca;
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-40">
-    <nav class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
-      <div>
-        <a href="#" class="text-xl md:text-2xl font-bold text-orange-600">
-          Denny Decision Lab
-        </a>
-        <p class="text-xs md:text-sm text-gray-500">
-          Sistem Pendukung Keputusan &amp; MCDM – by Denny Sihombing
-        </p>
+  <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <nav class="container mx-auto px-4 md:px-6 lg:px-8 py-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <a href="index.html" class="text-xl lg:text-2xl font-bold gradient-text">
+            Decision Lab
+          </a>
+          <p class="text-xs text-gray-500 mt-0.5">Multi Criteria Decision Making Hub</p>
+        </div>
+
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="#methods" class="nav-link text-sm text-gray-600 hover:text-orange-600">Methods</a>
+          <a href="#about" class="nav-link text-sm text-gray-600 hover:text-orange-600">About</a>
+          <a href="#resources" class="nav-link text-sm text-gray-600 hover:text-orange-600">Resources</a>
+          <a href="https://dsihombing.github.io" class="text-sm text-gray-600 hover:text-orange-600">
+            ← Back to Main Site
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-orange-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
       </div>
-      <div class="hidden md:flex space-x-6 text-sm">
-        <a href="#intro" class="text-gray-600 hover:text-blue-600">Pengantar</a>
-        <a href="#kasus" class="text-gray-600 hover:text-blue-600">Studi Kasus AHP</a>
-        <a href="#hasil" class="text-gray-600 hover:text-blue-600">Hasil</a>
-        <a href="https://dsihombing.github.io" class="text-gray-600 hover:text-orange-600">
-          Kembali ke Personal Site
-        </a>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-2 space-y-2">
+        <a href="#methods" class="block py-2 text-sm text-gray-600">Methods</a>
+        <a href="#about" class="block py-2 text-sm text-gray-600">About</a>
+        <a href="#resources" class="block py-2 text-sm text-gray-600">Resources</a>
+        <a href="https://dsihombing.github.io" class="block py-2 text-sm text-gray-600">← Back to Main Site</a>
       </div>
-      <button
-        id="mobile-menu-button"
-        class="md:hidden text-gray-600 hover:text-orange-600 focus:outline-none"
-        aria-label="Toggle navigation"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor"
-             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 text-sm">
-      <a href="#intro" class="block py-1.5 text-gray-600 hover:text-blue-600">Pengantar</a>
-      <a href="#kasus" class="block py-1.5 text-gray-600 hover:text-blue-600">Studi Kasus AHP</a>
-      <a href="#hasil" class="block py-1.5 text-gray-600 hover:text-blue-600">Hasil</a>
-      <a href="https://dsihombing.github.io" class="block py-1.5 text-gray-600 hover:text-orange-600">
-        Kembali ke Personal Site
-      </a>
-    </div>
   </header>
 
-  <!-- Main -->
-  <main class="container mx-auto px-4 md:px-6 py-8 md:py-10">
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-16 lg:py-24">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          🎓 By Denny Sihombing – Atma Jaya Catholic University
+        </div>
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+          Master Multi Criteria<br>Decision Making
+        </h1>
+        <p class="text-lg lg:text-xl text-orange-50 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Pelajari metode-metode MCDM dari dasar hingga mahir. Dilengkapi dengan studi kasus, 
+          perhitungan manual, dan implementasi interaktif.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#methods" class="bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold hover:bg-orange-50 transition-colors shadow-lg">
+            Explore Methods
+          </a>
+          <a href="#about" class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero -->
-    <section id="intro" class="mb-8">
-      <div class="bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover-lift">
+  <!-- Stats Section -->
+  <section class="py-12 bg-white border-b border-gray-100">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
         <div>
-          <p class="text-xs uppercase tracking-wide text-orange-600 font-semibold mb-1">
-            Modul Percobaan
-          </p>
-          <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-            Analytic Hierarchy Process (AHP) – Pemilihan Supplier Konstruksi
-          </h1>
-          <p class="text-sm md:text-base text-gray-600 max-w-2xl">
-            Halaman ini adalah prototipe pembelajaran AHP di Denny Decision Lab.
-            Konten berisi catatan kuliah singkat dan studi kasus pemilihan supplier konstruksi
-            dengan metode AHP.
-          </p>
+          <div class="text-4xl font-bold gradient-text">5+</div>
+          <div class="text-sm text-gray-600 mt-1">MCDM Methods</div>
         </div>
-        <div class="bg-orange-50 text-orange-700 rounded-xl px-4 py-3 text-xs md:text-sm">
-          <p class="font-semibold">Status: Eksperimen</p>
-          <p>Didesain untuk diintegrasikan ke modul SPK lainnya (TOPSIS, SAW, dsb.).</p>
+        <div>
+          <div class="text-4xl font-bold gradient-text">10+</div>
+          <div class="text-sm text-gray-600 mt-1">Case Studies</div>
         </div>
-      </div>
-    </section>
-
-    <!-- Section AHP konsep -->
-    <section class="grid md:grid-cols-3 gap-6 mb-8">
-      <div class="md:col-span-2 card">
-        <div class="card-title">
-          <h2 class="font-semibold text-gray-900 text-lg">1. Pengantar AHP</h2>
-          <span class="toggle-icon">▼</span>
+        <div>
+          <div class="text-4xl font-bold gradient-text">100%</div>
+          <div class="text-sm text-gray-600 mt-1">Free Access</div>
         </div>
-        <div class="card-content text-sm text-gray-700">
-          <p class="mb-2">
-            Analytic Hierarchy Process (AHP) adalah metode pengambilan keputusan multikriteria
-            yang mengubah penilaian subjektif pengambil keputusan menjadi bobot numerik yang
-            terstruktur dan dapat diuji konsistensinya.
-          </p>
-          <p class="mb-2">
-            Dalam pemilihan supplier konstruksi, AHP digunakan untuk menimbang berbagai aspek
-            seperti kualitas material, ketepatan waktu pengiriman, harga, dan rekam jejak,
-            lalu menentukan supplier dengan skor total terbaik.
-          </p>
-          <div class="highlight">
-            Inti AHP: memecah masalah kompleks → membuat perbandingan berpasangan → menghitung bobot → cek konsistensi → sintesis skor global.
-          </div>
+        <div>
+          <div class="text-4xl font-bold gradient-text">24/7</div>
+          <div class="text-sm text-gray-600 mt-1">Available</div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="card">
-        <h2 class="font-semibold text-gray-900 text-base mb-2">2. Skala Saaty (1–9)</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Nilai</th>
-              <th>Makna</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>Sama penting</td></tr>
-            <tr><td>3</td><td>Sedikit lebih penting</td></tr>
-            <tr><td>5</td><td>Lebih penting</td></tr>
-            <tr><td>7</td><td>Sangat lebih penting</td></tr>
-            <tr><td>9</td><td>Mutlak lebih penting</td></tr>
-            <tr><td>2,4,6,8</td><td>Intermediate</td></tr>
-          </tbody>
-        </table>
-        <p class="mt-2 text-xs text-gray-600">
-          Jika A lebih penting dari B dengan nilai <code>a</code>, maka B terhadap A bernilai <code>1/a</code>.
+  <!-- Methods Section -->
+  <section id="methods" class="py-16 lg:py-20">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          MCDM Methods
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Pilih metode yang sesuai dengan kebutuhan analisis dan keputusan Anda
         </p>
       </div>
-    </section>
 
-    <!-- Studi kasus -->
-    <section id="kasus" class="card mb-8">
-      <div class="card-title">
-        <h2 class="font-semibold text-gray-900 text-lg">3. Studi Kasus: Pemilihan Supplier Konstruksi</h2>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="card-content text-sm text-gray-700">
-        <p class="mb-2">
-          Sebuah perusahaan konstruksi hendak memilih satu supplier utama untuk proyek gedung perkantoran.
-        </p>
-        <ul class="list-disc list-inside mb-3">
-          <li><b>Alternatif:</b> A1 (Alfa), A2 (Beta), A3 (Gamma).</li>
-          <li><b>Kriteria:</b> C1 (Kualitas), C2 (Ketepatan Waktu), C3 (Harga), C4 (Rekam Jejak).</li>
-          <li><b>Tujuan:</b> memilih supplier utama yang paling sesuai.</li>
-        </ul>
-        <div class="highlight">
-          Hierarki: Tujuan → (C1, C2, C3, C4) → (A1, A2, A3).
-        </div>
-      </div>
-    </section>
-
-    <!-- Kriteria & bobot -->
-    <section class="card mb-8">
-      <div class="card-title">
-        <h2 class="font-semibold text-gray-900 text-lg">4. Perbandingan Kriteria dan Bobot</h2>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="card-content text-sm text-gray-700">
-        <p class="mb-2">Preferensi manajemen (ringkas):</p>
-        <ul class="list-disc list-inside mb-3">
-          <li>C1 lebih penting dari C2 (3), jauh lebih penting dari C3 (5), sangat lebih penting dari C4 (7).</li>
-          <li>C2 sedikit lebih penting dari C3 (3) dan lebih penting dari C4 (5).</li>
-          <li>C3 sedikit lebih penting dari C4 (3).</li>
-        </ul>
-
-        <p class="mb-1">Matriks perbandingan kriteria (C1–C4):</p>
-        <div class="formula">
-[ 1      3      5      7 ]
-[ 1/3    1      3      5 ]
-[ 1/5    1/3    1      3 ]
-[ 1/7    1/5    1/3    1 ]
-        </div>
-
-        <p class="mt-3 mb-1">Perkiraan bobot hasil normalisasi:</p>
-        <table id="tabel-kriteria">
-          <thead>
-            <tr>
-              <th data-sort="string">Kriteria <span class="sort-indicator">⇅</span></th>
-              <th data-sort="number">Bobot <span class="sort-indicator">⇅</span></th>
-              <th data-sort="string">Peran</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>C1 – Kualitas</td><td>0.53</td><td>Dominan</td></tr>
-            <tr><td>C2 – Waktu</td><td>0.28</td><td>Sangat penting</td></tr>
-            <tr><td>C3 – Harga</td><td>0.12</td><td>Penting</td></tr>
-            <tr><td>C4 – Rekam Jejak</td><td>0.07</td><td>Pelengkap</td></tr>
-          </tbody>
-        </table>
-
-        <p class="mt-2 text-xs text-gray-600">
-          Rasio konsistensi (CR) dapat dihitung menggunakan λ<sub>max</sub>, CI, dan CR; 
-          jika CR ≤ 0,1 maka penilaian dianggap konsisten.
-        </p>
-      </div>
-    </section>
-
-    <!-- Alternatif per kriteria -->
-    <section class="card mb-8">
-      <div class="card-title">
-        <h2 class="font-semibold text-gray-900 text-lg">5. Perbandingan Alternatif per Kriteria</h2>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="card-content text-sm text-gray-700 space-y-4">
-        <div>
-          <h3 class="font-semibold mb-1">a) Kualitas (C1)</h3>
-          <p class="mb-1">A1 &gt; A2 &gt; A3.</p>
-          <div class="formula">
-A_C1 =
-[ 1     3     5 ]
-[ 1/3   1     3 ]
-[ 1/5   1/3   1 ]
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        
+        <!-- AHP Card -->
+        <a href="ahp.html" class="method-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+          <div class="flex items-start justify-between mb-4">
+            <div class="bg-orange-100 text-orange-600 rounded-xl p-3">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <span class="badge badge-popular">Popular</span>
           </div>
-          <p>Bobot lokal: A1 ≈ 0,63; A2 ≈ 0,26; A3 ≈ 0,11.</p>
-        </div>
-
-        <div>
-          <h3 class="font-semibold mb-1">b) Ketepatan Waktu (C2)</h3>
-          <p class="mb-1">Beta paling tepat waktu, diikuti Gamma, lalu Alfa.</p>
-          <div class="formula">
-A_C2 =
-[ 1     1/5   1/3 ]
-[ 5     1     3   ]
-[ 3     1/3   1   ]
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            Analytic Hierarchy Process (AHP)
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+            Metode hierarki dengan perbandingan berpasangan untuk menentukan bobot kriteria dan prioritas alternatif.
+          </p>
+          <div class="flex items-center text-orange-600 font-semibold text-sm">
+            Pelajari AHP
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </div>
-          <p>Bobot lokal: A1 ≈ 0,12; A2 ≈ 0,58; A3 ≈ 0,30.</p>
-        </div>
+        </a>
 
-        <div>
-          <h3 class="font-semibold mb-1">c) Harga (C3)</h3>
-          <p class="mb-1">Gamma paling murah, kemudian Beta, lalu Alfa.</p>
-          <div class="formula">
-A_C3 =
-[ 1     1/3   1/5 ]
-[ 3     1     1/3 ]
-[ 5     3     1   ]
+        <!-- TOPSIS Card -->
+        <a href="topsis.html" class="method-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+          <div class="flex items-start justify-between mb-4">
+            <div class="bg-blue-100 text-blue-600 rounded-xl p-3">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <span class="badge badge-popular">Popular</span>
           </div>
-          <p>Bobot lokal: A1 ≈ 0,08; A2 ≈ 0,26; A3 ≈ 0,66.</p>
-        </div>
-
-        <div>
-          <h3 class="font-semibold mb-1">d) Rekam Jejak (C4)</h3>
-          <p class="mb-1">Alfa ≻ Beta ≻ Gamma.</p>
-          <div class="formula">
-A_C4 =
-[ 1     3     7 ]
-[ 1/3   1     5 ]
-[ 1/7   1/5   1 ]
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            TOPSIS
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+            Technique for Order Preference by Similarity to Ideal Solution – memilih alternatif terdekat dengan solusi ideal positif.
+          </p>
+          <div class="flex items-center text-blue-600 font-semibold text-sm">
+            Pelajari TOPSIS
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
           </div>
-          <p>Bobot lokal: A1 ≈ 0,64; A2 ≈ 0,26; A3 ≈ 0,10.</p>
-        </div>
-      </div>
-    </section>
+        </a>
 
-    <!-- Sintesis & hasil -->
-    <section id="hasil" class="card mb-4">
-      <div class="card-title">
-        <h2 class="font-semibold text-gray-900 text-lg">6. Sintesis Skor Global dan Rekomendasi</h2>
-        <span class="toggle-icon">▼</span>
-      </div>
-      <div class="card-content text-sm text-gray-700">
-        <p class="mb-2">
-          Skor global dihitung dengan:
-        </p>
-        <div class="formula">
-Skor(A_i) = Σ w_Ck · w_{A_i|Ck}
-        </div>
-
-        <p class="mt-3 mb-1">Ringkasan bobot:</p>
-        <table class="mb-3">
-          <thead>
-            <tr>
-              <th>Komponen</th>
-              <th>A1 (Alfa)</th>
-              <th>A2 (Beta)</th>
-              <th>A3 (Gamma)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Bobot kriteria</td>
-              <td colspan="3">C1=0,53; C2=0,28; C3=0,12; C4=0,07</td>
-            </tr>
-            <tr>
-              <td>Alt di C1 (Kualitas)</td>
-              <td>0,63</td><td>0,26</td><td>0,11</td>
-            </tr>
-            <tr>
-              <td>Alt di C2 (Waktu)</td>
-              <td>0,12</td><td>0,58</td><td>0,30</td>
-            </tr>
-            <tr>
-              <td>Alt di C3 (Harga)</td>
-              <td>0,08</td><td>0,26</td><td>0,66</td>
-            </tr>
-            <tr>
-              <td>Alt di C4 (Rekam Jejak)</td>
-              <td>0,64</td><td>0,26</td><td>0,10</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="mb-1">Hasil sintesis (aproksimasi):</p>
-        <ul class="list-disc list-inside mb-3">
-          <li>A1 ≈ 0,423</li>
-          <li>A2 ≈ 0,349</li>
-          <li>A3 ≈ 0,228</li>
-        </ul>
-
-        <table id="tabel-hasil">
-          <thead>
-            <tr>
-              <th data-sort="string">Alternatif <span class="sort-indicator">⇅</span></th>
-              <th data-sort="number">Skor AHP <span class="sort-indicator">⇅</span></th>
-              <th data-sort="string">Peringkat <span class="sort-indicator">⇅</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>A1 (Alfa)</td>
-              <td>0.423</td>
-              <td><span class="pill">1 (Terbaik)</span></td>
-            </tr>
-            <tr>
-              <td>A2 (Beta)</td>
-              <td>0.349</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <td>A3 (Gamma)</td>
-              <td>0.228</td>
-              <td>3</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="highlight mt-3">
-          A1 (Alfa) direkomendasikan sebagai supplier utama karena memiliki skor AHP tertinggi,
-          didukung kualitas dan rekam jejak yang kuat, meskipun tidak menjadi yang termurah.
-        </div>
-      </div>
-    </section>
-
-    <p class="text-xs text-gray-500 mt-4">
-      Catatan: Ini modul percobaan. Ke depan dapat ditambah input interaktif (slider/matrix)
-      agar mahasiswa bisa mengubah nilai perbandingan dan melihat dampak ke skor AHP.
-    </p>
-  </main>
-
-  <!-- Scripts -->
-  <script>
-    // Toggle mobile menu
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Expand/collapse cards
-    document.querySelectorAll('.card').forEach(card => {
-      const title = card.querySelector('.card-title');
-      const content = card.querySelector('.card-content');
-      if (!title || !content) return;
-      title.addEventListener('click', () => {
-        const collapsed = card.classList.toggle('collapsed');
-        content.style.display = collapsed ? 'none' : 'block';
-      });
-    });
-
-    // Simple sortable tables
-    function makeSortable(tableId) {
-      const table = document.getElementById(tableId);
-      if (!table) return;
-      const headers = table.querySelectorAll('th');
-      headers.forEach((th, index) => {
-        th.addEventListener('click', () => {
-          const type = th.getAttribute('data-sort') || 'string';
-          const tbody = table.querySelector('tbody');
-          const rows = Array.from(tbody.querySelectorAll('tr'));
-          const asc = !th.classList.contains('sorted-asc');
-          headers.forEach(h => h.classList.remove('sorted-asc', 'sorted-desc'));
-          th.classList.add(asc ? 'sorted-asc' : 'sorted-desc');
-
-          rows.sort((a, b) => {
-            const A = a.children[index].innerText.trim();
-            const B = b.children[index].innerText.trim();
-            if (type === 'number') {
-              const nA = parseFloat(A.replace(',', '.')) || 0;
-              const nB = parseFloat(B.replace(',', '.')) || 0;
-              return asc ? nA - nB : nB - nA;
-            } else {
-              return asc ? A.localeCompare(B) : B.localeCompare(A);
-            }
-          });
-
-          rows.forEach(r => tbody.appendChild(r));
-        });
-      });
-    }
-
-    makeSortable('tabel-kriteria');
-    makeSortable('tabel-hasil');
-  </script>
-</body>
-</html>
+        <!-- SAW Card -->
+        <a href="saw.html" class="method-card bg-white rounded-2xl p-6 lg:p-8 shadow-sm">
+          <div class="flex items-start justify-between mb-4">
+            <div class="bg-green-100 text-green-600 rounded-xl p-3">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+            </div>
+            <span class="badge badge-new">Beginner</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">
+            Simple Additive Weighting (SAW)
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relax
