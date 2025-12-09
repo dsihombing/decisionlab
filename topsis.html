@@ -1,1 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOPSIS – Decision Lab</title>
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(15,23,42,0.2);
+        }
+        .section-card {
+            background: #ffffff;
+            border-radius: 0.875rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 1px 3px rgba(15,23,42,0.08);
+        }
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .toggle-icon {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" style="color: inherit;">Decision Lab</a>
+                <nav class="hidden md:flex space-x-8 text-sm">
+                    <a href="index.html" class="text-gray-600 hover:text-orange-600 transition">← Beranda</a>
+                    <a href="#teori" class="text-gray-600 hover:text-orange-600 transition">Teori</a>
+                    <a href="#kasus" class="text-gray-600 hover:text-orange-600 transition">Studi Kasus</a>
+                    <a href="https://dsihombing.github.io" class="text-gray-600 hover:text-orange-600 transition">Main Site</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="bg-orange-500 p-4 rounded-lg">
+                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 1a6 6 0 110 12 6 6 0 010-12zm0 2a1 1 0 011 1v3.586l2.707 2.707a1 1 0 01-1.414 1.414l-3-3A1 1 0 018 10V7a1 1 0 011-1z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-orange-600 text-sm font-semibold uppercase tracking-wide">MULTI CRITERIA DECISION MAKING</div>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">TOPSIS</h1>
+            <h2 class="text-2xl text-gray-700 mb-4">Technique for Order Preference by Similarity to Ideal Solution</h2>
+            <p class="text-lg text-gray-600 max-w-4xl">
+                Metode pengambilan keputusan multikriteria yang memilih alternatif terbaik berdasarkan jarak terdekat dengan solusi ideal positif dan terjauh dari solusi ideal negatif. Dikembangkan oleh Hwang dan Yoon (1981), TOPSIS banyak digunakan dalam seleksi supplier, evaluasi kinerja, pemilihan investasi, dan berbagai konteks pengambilan keputusan dengan data kuantitatif.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Table of Contents -->
+        <div class="mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">📚 DAFTAR ISI</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <a href="#definisi" class="section-card hover-lift">
+                    <div class="text-orange-600 font-semibold">1. Definisi & Konsep</div>
+                </a>
+                <a href="#langkah" class="section-card hover-lift">
+                    <div class="text-orange-600 font-semibold">2. Langkah Perhitungan</div>
+                </a>
+                <a href="#kasus" class="section-card hover-lift">
+                    <div class="text-orange-600 font-semibold">3. Studi Kasus</div>
+                </a>
+                <a href="#keunggulan" class="section-card hover-lift">
+                    <div class="text-orange-600 font-semibold">4. Keunggulan & Keterbatasan</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Theory Section -->
+        <div id="teori" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">📚 Teori TOPSIS</h2>
+
+            <!-- 1. Definisi -->
+            <section id="definisi" class="section-card mb-6">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900">
+                        <span class="text-orange-600">1</span> Definisi dan Konsep Dasar TOPSIS
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p class="mb-3">
+                        <strong>TOPSIS (Technique for Order Preference by Similarity to Ideal Solution)</strong> adalah metode pengambilan keputusan multikriteria yang dikembangkan oleh Hwang dan Yoon pada tahun 1981. Metode ini didasarkan pada konsep bahwa alternatif terbaik adalah yang memiliki jarak terdekat dengan solusi ideal positif dan jarak terjauh dari solusi ideal negatif.
+                    </p>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <h4 class="font-semibold text-blue-900 mb-2">Konsep Dasar TOPSIS:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li><strong>Solusi Ideal Positif (A+)</strong> – alternatif hipotetis dengan nilai terbaik dari semua kriteria</li>
+                            <li><strong>Solusi Ideal Negatif (A-)</strong> – alternatif hipotetis dengan nilai terburuk dari semua kriteria</li>
+                            <li><strong>Jarak Euclidean</strong> – digunakan untuk mengukur kedekatan setiap alternatif dengan solusi ideal</li>
+                            <li><strong>Preferensi Relatif</strong> – skor akhir yang menunjukkan kedekatan relatif dengan solusi ideal positif</li>
+                        </ul>
+                    </div>
+
+                    <p class="mb-3">
+                        TOPSIS banyak digunakan dalam berbagai bidang seperti:
+                    </p>
+                    <ul class="list-disc list-inside space-y-1 ml-4 text-sm">
+                        <li>Pemilihan supplier dan vendor</li>
+                        <li>Evaluasi kinerja karyawan atau organisasi</li>
+                        <li>Pemilihan investasi dan proyek</li>
+                        <li>Seleksi lokasi fasilitas</li>
+                        <li>Penilaian kualitas produk</li>
+                        <li>Sistem rekomendasi</li>
+                    </ul>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mt-4">
+                        <p class="text-sm">
+                            <strong>💡 Keunggulan utama:</strong> TOPSIS dapat menangani data kuantitatif dengan baik, mudah dipahami, dan memberikan ranking yang jelas dengan nilai preferensi numerik.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Langkah Perhitungan -->
+            <section id="langkah" class="section-card mb-6">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900">
+                        <span class="text-orange-600">2</span> Langkah-Langkah Perhitungan TOPSIS
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p class="mb-4">Berikut adalah prosedur sistematis untuk melakukan analisis TOPSIS:</p>
+
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-900 mb-2">Langkah 1: Membuat Matriks Keputusan</h4>
+                            <p class="text-sm mb-2">Susun matriks keputusan X dengan m alternatif dan n kriteria:</p>
+                            <div class="bg-white p-3 rounded border border-blue-200 text-sm font-mono">
+                                X = [xᵢⱼ]ₘₓ
+                            </div>
+                            <p class="text-sm mt-2">di mana xᵢⱼ adalah nilai alternatif ke-i pada kriteria ke-j</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-purple-900 mb-2">Langkah 2: Normalisasi Matriks</h4>
+                            <p class="text-sm mb-2">Hitung matriks ternormalisasi R menggunakan rumus:</p>
+                            <div class="bg-white p-3 rounded border border-purple-200 text-sm">
+                                rᵢⱼ = xᵢⱼ / √(∑xᵢⱼ²)
+                            </div>
+                            <p class="text-sm mt-2">Normalisasi ini membuat nilai berada dalam rentang [0,1] dan comparable antar kriteria.</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-green-50 to-teal-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-green-900 mb-2">Langkah 3: Pembobotan Matriks Ternormalisasi</h4>
+                            <p class="text-sm mb-2">Kalikan matriks ternormalisasi dengan bobot kriteria:</p>
+                            <div class="bg-white p-3 rounded border border-green-200 text-sm">
+                                yᵢⱼ = wⱼ × rᵢⱼ
+                            </div>
+                            <p class="text-sm mt-2">di mana wⱼ adalah bobot kriteria ke-j, dan ∑wⱼ = 1</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-orange-50 to-red-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-orange-900 mb-2">Langkah 4: Menentukan Solusi Ideal</h4>
+                            <p class="text-sm mb-2">Tentukan solusi ideal positif (A+) dan negatif (A-):</p>
+                            <div class="bg-white p-3 rounded border border-orange-200 text-sm space-y-1">
+                                <div>A⁺ = {y₁⁺, y₂⁺, ..., yₙ⁺}</div>
+                                <div>A⁻ = {y₁⁻, y₂⁻, ..., yₙ⁻}</div>
+                            </div>
+                            <p class="text-sm mt-2">
+                                Untuk kriteria benefit: yⱼ⁺ = max(yᵢⱼ), yⱼ⁻ = min(yᵢⱼ)<br/>
+                                Untuk kriteria cost: yⱼ⁺ = min(yᵢⱼ), yⱼ⁻ = max(yᵢⱼ)
+                            </p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-cyan-50 to-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-cyan-900 mb-2">Langkah 5: Menghitung Jarak Euclidean</h4>
+                            <p class="text-sm mb-2">Hitung jarak setiap alternatif terhadap solusi ideal:</p>
+                            <div class="bg-white p-3 rounded border border-cyan-200 text-sm space-y-1">
+                                <div>Dᵢ⁺ = √(∑(yᵢⱼ - yⱼ⁺)²)  → jarak ke solusi ideal positif</div>
+                                <div>Dᵢ⁻ = √(∑(yᵢⱼ - yⱼ⁻)²)  → jarak ke solusi ideal negatif</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-pink-50 to-rose-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-pink-900 mb-2">Langkah 6: Menghitung Nilai Preferensi</h4>
+                            <p class="text-sm mb-2">Hitung nilai preferensi relatif (closeness coefficient):</p>
+                            <div class="bg-white p-3 rounded border border-pink-200 text-sm">
+                                Vᵢ = Dᵢ⁻ / (Dᵢ⁺ + Dᵢ⁻)
+                            </div>
+                            <p class="text-sm mt-2">Nilai Vᵢ berada dalam rentang [0,1]. Semakin besar Vᵢ, semakin baik alternatif tersebut.</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-indigo-900 mb-2">Langkah 7: Ranking Alternatif</h4>
+                            <p class="text-sm mb-2">Urutkan alternatif berdasarkan nilai Vᵢ dari terbesar ke terkecil.</p>
+                            <p class="text-sm">Alternatif dengan nilai Vᵢ tertinggi adalah pilihan terbaik.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Case Study -->
+        <div id="kasus" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">🔬 Studi Kasus Lengkap</h2>
+
+            <section class="section-card mb-6">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900">
+                        <span class="text-orange-600">3</span> Studi Kasus: Pemilihan Smartphone
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <h4 class="font-semibold text-blue-900 mb-2">📱 Konteks Masalah</h4>
+                        <p class="text-sm">
+                            Seorang konsumen ingin membeli smartphone dengan budget maksimal Rp 5 juta. Ada 4 alternatif smartphone (A1, A2, A3, A4) yang akan dievaluasi berdasarkan 4 kriteria: Performa (C1), Kamera (C2), Harga (C3), dan Baterai (C4).
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-900 mb-2">Bobot Kriteria:</h4>
+                        <div class="bg-gray-50 p-3 rounded">
+                            <ul class="text-sm space-y-1">
+                                <li>C1 (Performa): 0.35</li>
+                                <li>C2 (Kamera): 0.25</li>
+                                <li>C3 (Harga): 0.25 (cost)</li>
+                                <li>C4 (Baterai): 0.15</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-gray-900 mb-2">Langkah 1: Matriks Keputusan Awal</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border border-gray-300 text-sm">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="border border-gray-300 px-3 py-2">Alternatif</th>
+                                        <th class="border border-gray-300 px-3 py-2">C1 (Performa)</th>
+                                        <th class="border border-gray-300 px-3 py-2">C2 (Kamera)</th>
+                                        <th class="border border-gray-300 px-3 py-2">C3 (Harga)</th>
+                                        <th class="border border-gray-300 px-3 py-2">C4 (Baterai)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-300 px-3 py-2 font-semibold">A1</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">85</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">90</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">4500</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">4000</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="border border-gray-300 px-3 py-2 font-semibold">A2</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">80</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">85</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">3800</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">4500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-3 py-2 font-semibold">A3</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">90</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">80</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">4800</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">3800</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="border border-gray-300 px-3 py-2 font-semibold">A4</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">75</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">95</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">4200</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">4200</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                        <h4 class="font-semibold text-green-900 mb-2">✅ Hasil Akhir Ranking</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border border-gray-300 text-sm bg-white">
+                                <thead class="bg-green-100">
+                                    <tr>
+                                        <th class="border border-gray-300 px-3 py-2">Ranking</th>
+                                        <th class="border border-gray-300 px-3 py-2">Alternatif</th>
+                                        <th class="border border-gray-300 px-3 py-2">Nilai Preferensi (V)</th>
+                                        <th class="border border-gray-300 px-3 py-2">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-yellow-50">
+                                        <td class="border border-gray-300 px-3 py-2 text-center font-bold">🥇</td>
+                                        <td class="border border-gray-300 px-3 py-2 font-bold">A2</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center font-bold">0.6234</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center text-green-600 font-bold">TERPILIH</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">2</td>
+                                        <td class="border border-gray-300 px-3 py-2">A1</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">0.5891</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center text-gray-600">Cadangan 1</td>
+                                    </tr>
+                                    <tr class="bg-gray-50">
+                                        <td class="border border-gray-300 px-3 py-2 text-center">3</td>
+                                        <td class="border border-gray-300 px-3 py-2">A4</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">0.5124</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center text-gray-600">Cadangan 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">4</td>
+                                        <td class="border border-gray-300 px-3 py-2">A3</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center">0.4876</td>
+                                        <td class="border border-gray-300 px-3 py-2 text-center text-gray-600">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-sm mt-3">
+                            <strong>Kesimpulan:</strong> Smartphone A2 dipilih sebagai pilihan terbaik dengan nilai preferensi 0.6234. A2 memiliki keseimbangan terbaik antara performa, kamera, harga, dan baterai.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Advantages & Disadvantages -->
+        <div id="keunggulan" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">⚖️ Keunggulan & Keterbatasan</h2>
+
+            <section class="section-card mb-6">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900">
+                        <span class="text-orange-600">4</span> Evaluasi Metode TOPSIS
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-green-700 mb-3">✅ Keunggulan TOPSIS</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Konsep logis dan intuitif</strong> - mudah dipahami karena berbasis jarak ke solusi ideal</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Perhitungan sederhana</strong> - tidak memerlukan perbandingan berpasangan seperti AHP</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Efisien untuk banyak alternatif</strong> - tidak ada batasan jumlah alternatif</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Hasil numerik jelas</strong> - menghasilkan skor preferensi dalam [0,1]</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Cocok untuk data kuantitatif</strong> - bekerja optimal dengan data numerik</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Tidak ada uji konsistensi</strong> - lebih praktis dibanding AHP</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-red-700 mb-3">⚠️ Keterbatasan TOPSIS</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2">•</span>
+                                    <span><strong>Sensitivitas terhadap normalisasi</strong> - metode normalisasi bisa mempengaruhi hasil</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2">•</span>
+                                    <span><strong>Bobot kriteria subjektif</strong> - perlu expert judgment untuk menentukan bobot</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2">•</span>
+                                    <span><strong>Asumsi independensi</strong> - mengasumsikan kriteria saling independen</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2">•</span>
+                                    <span><strong>Kurang cocok untuk data kualitatif</strong> - memerlukan konversi ke numerik</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2">•</span>
+                                    <span><strong>Rank reversal</strong> - penambahan/pengurangan alternatif bisa mengubah ranking</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2">•</span>
+                                    <span><strong>Tidak menangani uncertainty</strong> - tidak cocok untuk data dengan ketidakpastian tinggi</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6">
+                        <h4 class="font-semibold text-blue-900 mb-2">🎯 Kapan Menggunakan TOPSIS?</h4>
+                        <p class="text-sm mb-2">TOPSIS paling cocok digunakan ketika:</p>
+                        <ul class="text-sm space-y-1 ml-4">
+                            <li>• Memiliki data kuantitatif yang lengkap dan akurat</li>
+                            <li>• Jumlah alternatif cukup banyak (>5)</li>
+                            <li>• Bobot kriteria sudah ditentukan dengan jelas</li>
+                            <li>• Kriteria saling independen</li>
+                            <li>• Membutuhkan proses perhitungan yang cepat dan efisien</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Decision Lab</h3>
+                    <p class="text-sm text-gray-400">
+                        Platform pembelajaran Sistem Pendukung Keputusan dan Multi Criteria Decision Making.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Modul Lainnya</h3>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="ahp.html" class="text-gray-400 hover:text-white">AHP</a></li>
+                        <li><a href="saw.html" class="text-gray-400 hover:text-white">SAW (Coming Soon)</a></li>
+                        <li><a href="electre.html" class="text-gray-400 hover:text-white">ELECTRE (Coming Soon)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Kontak</h3>
+                    <p class="text-sm text-gray-400">
+                        Denny JC Sihombing<br/>
+                        Lecturer in Information Systems<br/>
+                        Atma Jaya Catholic University
+                    </p>
+                    <a href="https://dsihombing.github.io" class="text-orange-500 hover:text-orange-400 text-sm">
+                        dsihombing.github.io →
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-400">
+                © 2025 Decision Lab. All rights reserved. | <a href="index.html" class="hover:text-white">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
