@@ -371,20 +371,69 @@
                 <strong>Contoh konkret hierarki pemilihan laptop:</strong>
               </p>
 
-              <div class="matrix-box text-xs">
-Tujuan: Memilih laptop terbaik untuk data science
-  │
-  ├─ Kriteria 1: Performa (CPU, RAM, GPU)
-  ├─ Kriteria 2: Harga
-  ├─ Kriteria 3: Portabilitas (berat, ukuran)
-  └─ Kriteria 4: Daya tahan baterai
-       │
-       ├─ Alternatif A: Laptop X
-       ├─ Alternatif B: Laptop Y
-       └─ Alternatif C: Laptop Z
-              </div>
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border-2 border-blue-200">
+                    <!-- Tujuan/Goal -->
+                    <div class="mb-6">
+                        <div class="bg-blue-600 text-white px-4 py-3 rounded-lg text-center font-bold text-lg mb-4">
+                            🎯 TUJUAN (Goal)
+                        </div>
+                        <div class="bg-white border-2 border-blue-300 rounded-lg p-4 text-center shadow-sm">
+                            <p class="font-bold text-blue-900">Memilih laptop terbaik untuk data science</p>
+                        </div>
+                    </div>
 
-              <div class="info-box mt-3">
+                    <!-- Arrow down -->
+                    <div class="text-center text-3xl text-blue-400 mb-4">↓</div>
+
+                    <!-- Kriteria -->
+                    <div class="mb-6">
+                        <div class="bg-orange-500 text-white px-4 py-3 rounded-lg text-center font-bold mb-4">
+                            📊 KRITERIA (Criteria)
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div class="bg-white border-2 border-orange-300 rounded-lg p-3 text-center shadow-sm">
+                                <p class="font-semibold text-orange-900 text-sm">Kriteria 1:</p>
+                                <p class="text-xs mt-1">Performa<br/>(CPU, RAM, GPU)</p>
+                            </div>
+                            <div class="bg-white border-2 border-orange-300 rounded-lg p-3 text-center shadow-sm">
+                                <p class="font-semibold text-orange-900 text-sm">Kriteria 2:</p>
+                                <p class="text-xs mt-1">Harga</p>
+                            </div>
+                            <div class="bg-white border-2 border-orange-300 rounded-lg p-3 text-center shadow-sm">
+                                <p class="font-semibold text-orange-900 text-sm">Kriteria 3:</p>
+                                <p class="text-xs mt-1">Portabilitas<br/>(berat, ukuran)</p>
+                            </div>
+                            <div class="bg-white border-2 border-orange-300 rounded-lg p-3 text-center shadow-sm">
+                                <p class="font-semibold text-orange-900 text-sm">Kriteria 4:</p>
+                                <p class="text-xs mt-1">Daya tahan baterai</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow down -->
+                    <div class="text-center text-3xl text-green-400 mb-4">↓</div>
+
+                    <!-- Alternatif -->
+                    <div>
+                        <div class="bg-green-600 text-white px-4 py-3 rounded-lg text-center font-bold mb-4">
+                            ✅ ALTERNATIF (Alternatives)
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="bg-white border-2 border-green-300 rounded-lg p-4 text-center shadow-sm">
+                                <p class="font-bold text-green-900">Laptop X</p>
+                                <p class="text-xs text-gray-600 mt-1">Alternatif A</p>
+                            </div>
+                            <div class="bg-white border-2 border-green-300 rounded-lg p-4 text-center shadow-sm">
+                                <p class="font-bold text-green-900">Laptop Y</p>
+                                <p class="text-xs text-gray-600 mt-1">Alternatif B</p>
+                            </div>
+                            <div class="bg-white border-2 border-green-300 rounded-lg p-4 text-center shadow-sm">
+                                <p class="font-bold text-green-900">Laptop Z</p>
+                                <p class="text-xs text-gray-600 mt-1">Alternatif C</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>              <div class="info-box mt-3">
                 <p class="text-sm">
                   <strong>Catatan penting:</strong> Jumlah level dapat disesuaikan dengan kompleksitas 
                   masalah. Untuk masalah sederhana cukup 3 level (tujuan-kriteria-alternatif), 
