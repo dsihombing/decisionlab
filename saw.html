@@ -1,1 +1,478 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAW – Decision Lab</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -8px rgba(15,23,42,0.2);
+        }
+        .section-card {
+            background: #ffffff;
+            border-radius: 0.875rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 1px 3px rgba(15,23,42,0.08);
+        }
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .toggle-icon {
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                              <a href="index.html" class="text-xl font-bold text-gray-900">Decision Lab</a>
+                <nav class="hidden md:flex space-x-8 text-sm">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition">← Beranda</a>
+                    <a href="#teori" class="text-gray-600 hover:text-orange-500 transition">Teori</a>
+                    <a href="#kasus" class="text-gray-600 hover:text-orange-500 transition">Studi Kasus</a>
+                    <a href="https://dsihombing.github.io" class="text-gray-800 hover:text-orange-500 transition">Main Site</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border-2 border-blue-200 mb-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex items-center gap-8 mb-12">
+                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm6 6a1 1 0 011 1v6a1 1 0 11-2 0v-6a1 1 0 011-1zm6-6a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1z"/></svg>
+
+                <div>
+                    <div class="text-orange-500 font-semibold uppercase tracking-wide">MULTI CRITERIA DECISION MAKING</div>
+                </div>
+            </div>
+
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">SAW</h1>
+            <h2 class="text-2xl text-gray-700 mb-6">Simple Additive Weighting</h2>
+            <p class="text-gray-600 text-lg max-w-3xl">
+                Metode penjumlahan terbobot yang mengevaluasi dan merangking alternatif berdasarkan skor total yang dinormalisasi dengan bobot kriteria yang telah ditentukan. Dikembangkan sebagai salah satu metode MCDM paling sederhana dan mudah dipahami, SAW banyak digunakan dalam pemilihan karyawan, evaluasi supplier, pemilihan produk, dan berbagai konteks pengambilan keputusan dengan kriteria kuantitatif.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- DAFTAR ISI -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-8">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                📚 DAFTAR ISI
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <a href="#definisi" class="text-orange-600 hover:text-orange-800 transition">
+                    <div class="text-orange-600 hover:text-orange-800">1. Definisi & Konsep</div>
+                </a>
+                <a href="#langkah" class="text-orange-600 hover:text-orange-800 transition">
+                    <div class="text-orange-600 hover:text-orange-800">2. Langkah Perhitungan</div>
+                </a>
+                <a href="#kasus" class="text-orange-600 hover:text-orange-800 transition">
+                    <div class="text-orange-600 hover:text-orange-800">3. Studi Kasus</div>
+                </a>
+                <a href="#keunggulan" class="text-orange-600 hover:text-orange-800 transition">
+                    <div class="text-orange-600 hover:text-orange-800">4. Keunggulan & Keterbatasan</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Teori SAW -->
+        <section id="teori" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+                📚 Teori SAW
+            </h2>
+
+            <!-- Section 1: Definisi & Konsep Dasar SAW -->
+            <section id="definisi" class="section-card hover-lift mb-4">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                        <span class="text-orange-600 text-sm">1</span>
+                        Definisi dan Konsep Dasar SAW
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p class="mb-4">
+                        <strong>SAW (Simple Additive Weighting)</strong> adalah metode penjumlahan terbobot yang mengevaluasi alternatif berdasarkan skor total hasil normalisasi nilai setiap kriteria dikalikan dengan bobotnya. Metode ini menggunakan konsep penjumlahan sederhana untuk menghasilkan peringkat alternatif.
+                    </p>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <h4 class="font-bold text-blue-900 mb-2">Konsep Dasar SAW:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li><strong>Normalisasi</strong> – mengubah nilai kriteria ke skala [0,1] agar comparable</li>
+                            <li><strong>Bobot Kriteria</strong> – tingkat kepentingan setiap kriteria (Σw = 1)</li>
+                            <li><strong>Penjumlahan Terbobot</strong> – skor = Σ(nilai ternormalisasi × bobot)</li>
+                            <li><strong>Peringkat</strong> – alternatif dengan skor tertinggi adalah terbaik</li>
+                        </ul>
+                    </div>
+
+                    <p class="mb-2">SAW banyak digunakan dalam berbagai bidang seperti:</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm mb-4">
+                        <li>Pemilihan karyawan dan rekrutmen</li>
+                        <li>Evaluasi kinerja karyawan atau organisasi</li>
+                        <li>Pemilihan supplier dan vendor</li>
+                        <li>Pemilihan lokasi fasilitas</li>
+                        <li>Pemilihan produk atau layanan</li>
+                        <li>Sistem rekomendasi</li>
+                    </ul>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-3 text-sm">
+                        ⚠️ <strong>Keunggulan utama:</strong> SAW sangat mudah dipahami, tidak memerlukan pairwise comparison seperti AHP, dan komputasinya sangat sederhana – cocok untuk pengambilan keputusan cepat dengan data kuantitatif yang jelas.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Langkah-Langkah Perhitungan SAW -->
+            <section id="langkah" class="section-card hover-lift mb-4">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                        <span class="text-orange-600 text-sm">2</span>
+                        Langkah-Langkah Perhitungan SAW
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <p class="mb-4">Berikut adalah prosedur sistematis untuk melakukan analisis SAW:</p>
+
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-900 mb-2">Langkah 1: Membuat Matriks Keputusan</h4>
+                            <p class="text-sm mb-2">Susun matriks keputusan X dengan m alternatif dan n kriteria:</p>
+                            <div class="bg-white p-3 rounded border border-blue-200 text-sm">
+                                X = [x<sub>ij</sub>]<sub>m×n</sub>
+                            </div>
+                            <p class="text-sm mt-2">di mana x<sub>ij</sub> adalah nilai alternatif ke-i pada kriteria ke-j</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-pink-50 to-red-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-pink-900 mb-2">Langkah 2: Normalisasi Matriks</h4>
+                            <p class="text-sm mb-2">Hitung matriks ternormalisasi R menggunakan rumus:</p>
+                            <div class="bg-white p-3 rounded border border-pink-200 text-sm space-y-2">
+                                <p><strong>Untuk kriteria benefit:</strong> r<sub>ij</sub> = x<sub>ij</sub> / max(x<sub>ij</sub>)</p>
+                                <p><strong>Untuk kriteria cost:</strong> r<sub>ij</sub> = min(x<sub>ij</sub>) / x<sub>ij</sub></p>
+                            </div>
+                            <p class="text-sm mt-2">Normalisasi ini membuat nilai berada dalam rentang [0,1] dan comparable antar kriteria.</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-green-50 to-teal-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-green-900 mb-2">Langkah 3: Menghitung Nilai Preferensi</h4>
+                            <p class="text-sm mb-2">Kalikan matriks ternormalisasi dengan bobot kriteria:</p>
+                            <div class="bg-white p-3 rounded border border-green-200 text-sm">
+                                V<sub>i</sub> = Σ (w<sub>j</sub> × r<sub>ij</sub>)
+                            </div>
+                            <p class="text-sm mt-2">di mana w<sub>j</sub> adalah bobot kriteria ke-j, dan Σw<sub>j</sub> = 1</p>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-purple-900 mb-2">Langkah 4: Ranking Alternatif</h4>
+                            <p class="text-sm">Urutkan alternatif berdasarkan nilai V<sub>i</sub>, dari terbesar ke terkecil.</p>
+                            <p class="text-sm mt-2">Alternatif dengan nilai V<sub>i</sub> tertinggi adalah pilihan terbaik.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Studi Kasus Lengkap -->
+        <section id="kasus" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+                📋 Studi Kasus Lengkap
+            </h2>
+
+            <section class="section-card hover-lift mb-4">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                        <span class="text-orange-600 text-sm">3</span>
+                        Studi Kasus: Pemilihan Karyawan Terbaik
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <h4 class="font-bold text-blue-900 mb-2">📊 Konteks Masalah</h4>
+                        <p class="text-sm">
+                            Sebuah perusahaan IT ingin memilih karyawan terbaik dari 4 kandidat (K1, K2, K3, K4) berdasarkan 4 kriteria: Skill Teknis (C1), Pengalaman (C2), Komunikasi (C3), dan Gaji yang diminta/Cost (C4).
+                        </p>
+                    </div>
+
+                    <p class="font-semibold mb-2">Bobot Kriteria:</p>
+                    <ul class="list-disc list-inside text-sm mb-4">
+                        <li>C1 (Skill Teknis): 0.40 (benefit)</li>
+                        <li>C2 (Pengalaman tahun): 0.25 (benefit)</li>
+                        <li>C3 (Komunikasi 1-10): 0.20 (benefit)</li>
+                        <li>C4 (Gaji juta/bulan): 0.15 (cost)</li>
+                    </ul>
+
+                    <h4 class="font-semibold text-gray-900 mb-2">Langkah 1: Matriks Keputusan Awal</h4>
+                    <div class="overflow-x-auto mb-4">
+                        <table class="min-w-full border border-gray-300 text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="border border-gray-300 px-3 py-2">Alternatif</th>
+                                    <th class="border border-gray-300 px-3 py-2">C1 (Skill)</th>
+                                    <th class="border border-gray-300 px-3 py-2">C2 (Pengalaman)</th>
+                                    <th class="border border-gray-300 px-3 py-2">C3 (Komunikasi)</th>
+                                    <th class="border border-gray-300 px-3 py-2">C4 (Gaji)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K1</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">85</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">5</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">8</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">8</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K2</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">90</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">7</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">7</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">10</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K3</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">80</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">6</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">9</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">7</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K4</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">75</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">8</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">6</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">9</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="font-semibold text-gray-900 mb-2">Langkah 2: Matriks Ternormalisasi</h4>
+                    <p class="text-sm mb-2">Max: C1=90, C2=8, C3=9 | Min: C4=7</p>
+                    <div class="overflow-x-auto mb-4">
+                        <table class="min-w-full border border-gray-300 text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="border border-gray-300 px-3 py-2">Alternatif</th>
+                                    <th class="border border-gray-300 px-3 py-2">C1</th>
+                                    <th class="border border-gray-300 px-3 py-2">C2</th>
+                                    <th class="border border-gray-300 px-3 py-2">C3</th>
+                                    <th class="border border-gray-300 px-3 py-2">C4</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K1</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.944</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.625</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.889</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.875</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K2</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">1.000</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.875</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.778</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.700</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K3</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.889</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.750</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">1.000</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">1.000</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K4</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.833</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">1.000</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.667</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.778</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                        <h4 class="font-bold text-green-900 mb-2">✅ Hasil Akhir Ranking</h4>
+                        <table class="min-w-full border border-gray-300 text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="border border-gray-300 px-3 py-2">Ranking</th>
+                                    <th class="border border-gray-300 px-3 py-2">Alternatif</th>
+                                    <th class="border border-gray-300 px-3 py-2">Nilai Preferensi (V)</th>
+                                    <th class="border border-gray-300 px-3 py-2">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-yellow-50">
+                                    <td class="border border-gray-300 px-3 py-2 text-center">🥇</td>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K3</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.9172</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center text-green-700 font-bold">TERPILIH</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">2</td>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K2</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.9133</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">Cadangan 1</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">3</td>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K1</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.8859</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">Cadangan 2</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">4</td>
+                                    <td class="border border-gray-300 px-3 py-2 font-semibold">K4</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">0.8659</td>
+                                    <td class="border border-gray-300 px-3 py-2 text-center">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="mt-3 text-sm"><strong>Kesimpulan:</strong> Kandidat K3 dipilih sebagai karyawan terbaik dengan nilai preferensi 0.9172. K3 unggul karena memiliki komunikasi terbaik, gaji terendah (cost paling efisien), dan skill serta pengalaman yang kompetitif.</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Keunggulan & Keterbatasan -->
+        <section id="keunggulan" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
+                ⚖️ Keunggulan & Keterbatasan
+            </h2>
+
+            <section class="section-card hover-lift mb-4">
+                <div class="section-title">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                        <span class="text-orange-600 text-sm">4</span>
+                        Evaluasi Metode SAW
+                    </h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="section-content">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h4 class="font-bold text-green-700 mb-3 flex items-center">
+                                ✅ Keunggulan SAW
+                            </h4>
+                            <ul class="space-y-2 text-sm">
+                                <li><strong>Kesederhanaan konsep</strong> – sangat mudah dipahami dan diterapkan</li>
+                                <li><strong>Komputasi ringan</strong> – perhitungan cepat tanpa iterasi kompleks</li>
+                                <li><strong>Tidak perlu pairwise comparison</strong> – lebih efisien dari AHP</li>
+                                <li><strong>Transparansi tinggi</strong> – proses jelas dan mudah dijelaskan</li>
+                                <li><strong>Cocok untuk data numerik</strong> – bekerja optimal dengan data kuantitatif</li>
+                                <li><strong>Fleksibel untuk banyak alternatif</strong> – skalabel untuk jumlah alternatif besar</li>
+                                <li><strong>Implementasi praktis</strong> – mudah diimplementasikan di Excel atau sistem</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-orange-700 mb-3 flex items-center">
+                                ⚠️ Keterbatasan SAW
+                            </h4>
+                            <ul class="space-y-2 text-sm">
+                                <li><strong>Sensitif terhadap bobot</strong> – perubahan bobot dapat mengubah ranking signifikan</li>
+                                <li><strong>Penentuan bobot subjektif</strong> – perlu expert judgment atau metode lain (AHP)</li>
+                                <li><strong>Asumsi independensi</strong> – mengasumsikan kriteria saling independen</li>
+                                <li><strong>Kurang cocok data kualitatif</strong> – memerlukan konversi ke numerik terlebih dahulu</li>
+                                <li><strong>Tidak menangani uncertainty</strong> – tidak dapat menangani data tidak pasti atau fuzzy</li>
+                                <li><strong>Normalisasi berbeda-beda</strong> – hasil dapat bervariasi tergantung metode normalisasi</li>
+                                <li><strong>Tidak ada uji konsistensi</strong> – tidak seperti AHP yang memiliki CR test</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                        <h4 class="font-bold text-blue-900 mb-2">🎯 Kapan Menggunakan SAW?</h4>
+                        <p class="text-sm mb-2">SAW paling cocok digunakan ketika:</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Data kriteria sudah dalam bentuk kuantitatif dan terukur dengan jelas</li>
+                            <li>Bobot kriteria sudah ditentukan atau dapat ditentukan secara sederhana</li>
+                            <li>Dibutuhkan keputusan cepat tanpa analisis kompleks</li>
+                            <li>Kriteria dapat diasumsikan saling independen</li>
+                            <li>Transparansi dan kemudahan pemahaman adalah prioritas</li>
+                            <li>Implementasi sistem otomatis untuk rekomendasi produk/layanan</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Decision Lab</h3>
+                    <p class="text-sm text-gray-400">
+                        Platform pembelajaran Sistem Pendukung Keputusan dan Multi Criteria Decision Making.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Modul Lainnya</h3>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="ahp.html" class="text-gray-400 hover:text-white">AHP</a></li>
+                        <li><a href="topsis.html" class="text-gray-400 hover:text-white">TOPSIS</a></li>
+                        <li><a href="electre.html" class="text-gray-400 hover:text-white">ELECTRE (Coming Soon)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Kontak</h3>
+                    <p class="text-sm text-gray-400">
+                        Denny JC Sihombing<br>
+                        Lecturer in Information Systems<br>
+                        Atma Jaya Catholic University
+                    </p>
+                    <a href="https://dsihombing.github.io" class="text-orange-500 hover:text-orange-400 text-sm">
+                        dsihombing.github.io →
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-sm text-gray-400">
+                © 2025 Decision Lab. All rights reserved. |
+                <a href="index.html" class="hover:text-white">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
