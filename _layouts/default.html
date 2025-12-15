@@ -49,14 +49,7 @@
 </head>
 <body>
  <div class="language-switcher">
- {% for lang in site.languages %}
- {% if lang == site.active_lang %}
- <strong>{{ lang | upcase }}</strong>
- {% else %}
-    {% if lang == 'id' %}<a href="/decisionlab/">{{ lang | upcase }}</a>{% else %}<a href="/decisionlab/en/">{{ lang | upcase }}</a>{% endif %}{% unless forloop.last %} | {% endunless %}    {% endif %}
- {% endfor %}
- </div>
-
+   <a href="/decisionlab/">ID</a> | <a href="/decisionlab/en/">EN</a>
  <header>
  <div class="nav">
  <div class="nav-brand">
