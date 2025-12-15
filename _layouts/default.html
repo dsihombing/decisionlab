@@ -53,8 +53,7 @@
  {% if lang == site.active_lang %}
  <strong>{{ lang | upcase }}</strong>
  {% else %}
-    <a href="{% if lang == site.default_lang %}/decisionlab/{% else %}/decisionlab/{{ lang }}/{% endif %}">{{ lang | upcase }}</a> {% unless forloop.last %} | {% endunless %}
-    {% endif %}
+    {% if lang == 'id' %}<a href="/decisionlab/">{{ lang | upcase }}</a>{% else %}<a href="/decisionlab/en/">{{ lang | upcase }}</a>{% endif %}{% unless forloop.last %} | {% endunless %}    {% endif %}
  {% endfor %}
  </div>
 
