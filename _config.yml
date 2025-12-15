@@ -2,14 +2,3 @@ title: "Decision Lab - MCDM Learning Hub"
 baseurl: "/decisionlab"
 url: "https://dsihombing.github.io"
 
-plugins:
-  - jekyll-polyglot
-
-languages: ["id", "en"]
-default_lang: "id"
-exclude_from_localization:
-  - assets
-  - images
-  - css
-  - js
-parallel_localization: true
