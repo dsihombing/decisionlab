@@ -1,110 +1,611 @@
----
-layout: default
-title: "Decision Lab – Multi-Criteria Decision Making Laboratory"
-lang: en
-permalink: /en/
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decision Lab – Multi-Criteria Decision Making Laboratory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Decision Lab is an MCDM (Multi-Criteria Decision Making) learning laboratory providing systematic guides, examples, and resources for better decision-making in business and information systems.">
+    <meta name="author" content="Denny JC Sihombing">
 
-<!-- Hero -->
-<section class="hero">
-  <div class="hero-kicker">MCDM Learning Laboratory</div>
-  <h1>Master Multi-Criteria Decision Making (MCDM)</h1>
-  <h2>Systematic guides to methods, examples, and resources for better decision-making in business and information systems</h2>
-  <p>
-    Decision Lab provides structured learning materials for multi-criteria decision making, 
-    from foundational concepts to practical applications using methods such as AHP, TOPSIS, and SAW.
-  </p>
-  <p>
-    Designed for students, researchers, and practitioners who want to apply decision support 
-    and analytical techniques to solve real-world decision problems.
-  </p>
-  <div class="hero-stats">
-    <span class="stat-chip">5+ MCDM methods (planned)</span>
-    <span class="stat-chip">10+ case studies (in development)</span>
-    <span class="stat-chip">Free access · 24/7</span>
-  </div>
-  <div class="hero-cta">
-    <a class="btn btn-primary" href="#methods">Explore MCDM Methods</a>
-    <a class="btn btn-secondary" href="https://dsihombing.github.io">Back to Main Site</a>
-  </div>
-</section>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Decision Lab – Multi-Criteria Decision Making Laboratory">
+    <meta property="og:description" content="An MCDM learning laboratory to master AHP, TOPSIS, SAW, and other multi-criteria decision making methods.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dsihombing.github.io/decisionlab/en/">
+    <meta property="og:image" content="https://dsihombing.github.io/denny.png">
 
-<!-- Methods -->
-<section id="methods">
-  <h2>MCDM Methods</h2>
-  <p>
-    Start with a method that matches your familiarity and the complexity of your decision problem. 
-    Each method will be documented with overviews, step-by-step procedures, numerical examples, and implementation notes.
-  </p>
-  <div class="methods-grid">
-    <article class="card">
-      <span class="badge">Recommended Start</span>
-      <h3>Analytic Hierarchy Process (AHP)</h3>
-      <p>
-        Hierarchical, pairwise comparison-based method to derive criteria weights and rank alternatives with consistency checks.
-      </p>
-      <ul>
-        <li>Suitable for strategic decisions with qualitative and quantitative criteria</li>
-        <li>Uses pairwise comparisons and consistency ratio validation</li>
-        <li>Commonly used in project selection, vendor evaluation, and prioritization</li>
-      </ul>
-      <a class="more-link" href="#">Learn AHP →</a>
-    </article>
+    <link rel="icon" href="/denny.png" type="image/png">
 
-    <article class="card">
-      <span class="badge">Ranking Focus</span>
-      <h3>TOPSIS</h3>
-      <p>
-        Technique for Order Preference by Similarity to Ideal Solution, ranking alternatives based on distance to ideal and anti-ideal solutions.
-      </p>
-      <ul>
-        <li>Effective for ranking alternatives with measurable performance scores</li>
-        <li>Uses normalization, weighting, and distance to ideal solutions</li>
-        <li>Popular in supplier selection, location choice, and performance evaluation</li>
-      </ul>
-      <a class="more-link" href="#">Learn TOPSIS →</a>
-    </article>
+    <style>
+        :root {
+            --bg: #020617;
+            --bg-alt: #0b1120;
+            --card-bg: #020617;
+            --accent: #f97316;
+            --accent-soft: rgba(249, 115, 22, 0.16);
+            --accent-strong: rgba(249, 115, 22, 0.3);
+            --text: #e5e7eb;
+            --text-soft: #9ca3af;
+            --text-faint: #6b7280;
+            --border-subtle: rgba(148, 163, 184, 0.35);
+            --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
+            --radius-lg: 18px;
+        }
 
-    <article class="card">
-      <span class="badge">Beginner Friendly</span>
-      <h3>Simple Additive Weighting (SAW)</h3>
-      <p>
-        Weighted sum method that evaluates and ranks alternatives using normalized scores and predefined weights.
-      </p>
-      <ul>
-        <li>Good entry point for those new to MCDM</li>
-        <li>Conceptually simple and easy to implement in spreadsheets</li>
-        <li>Useful for everyday multi-criteria decisions</li>
-      </ul>
-      <a class="more-link" href="#">Learn SAW →</a>
-    </article>
-  </div>
-  <p class="meta">Additional methods such as PROMETHEE, VIKOR, and others are planned to be added as the lab evolves.</p>
-</section>
+        * {
+            box-sizing: border-box;
+        }
 
-<!-- Learning Resources -->
-<section id="resources">
-  <h2>Learning Resources</h2>
-  <div class="two-column">
-    <div>
-      <p>
-        Learning materials are designed to provide strong understanding of each MCDM method, 
-        complete with workable numerical examples and practical implementation guides.
-      </p>
-      <p>
-        Focus on conceptual understanding and practical application, with examples relevant 
-        to business and information systems contexts.
-      </p>
-    </div>
-    <div>
-      <h3>Learning Format</h3>
-      <ul class="resource-list">
-        <li>Step-by-step guides with concept explanations</li>
-        <li>Complete numerical examples with calculations</li>
-        <li>Implementation templates and worksheets</li>
-        <li>Case studies from real-world applications</li>
-        <li>References to academic literature</li>
-      </ul>
-    </div>
-  </div>
-</section>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%, #000000 100%);
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
+        }
+
+        @media (min-width: 768px) {
+            .page {
+                padding: 32px 20px 64px;
+            }
+        }
+
+        /* NAVBAR */
+        .nav-shell {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(18px);
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.92), transparent);
+        }
+
+        .nav {
+            max-width: 980px;
+            margin: 0 auto 12px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: radial-gradient(circle at 30% 0%, #fed7aa 0, #fb923c 35%, #c2410c 90%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: #0b1120;
+            box-shadow: 0 12px 30px rgba(248, 113, 22, 0.7);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-name {
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            font-size: 13px;
+        }
+
+        .brand-sub {
+            font-size: 11px;
+            color: var(--text-soft);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(to right, #fb923c, #f97316);
+            transition: width 0.18s ease-out;
+        }
+
+        .nav-link:hover::after {
+            width: 16px;
+        }
+
+        .nav-link.active {
+            color: #f9fafb;
+            font-weight: 500;
+        }
+
+        .nav-link.active::after {
+            width: 16px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: 2px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.6);
+        }
+
+        .lang-pill {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            cursor: pointer;
+            color: var(--text-soft);
+            transition: all 0.18s ease-out;
+        }
+
+        .lang-pill.active {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            color: #0b1120;
+            font-weight: 600;
+            box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.7);
+        }
+
+        .nav-main-link {
+            font-size: 11px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            border: 1px solid var(--border-subtle);
+            background: rgba(15, 23, 42, 0.96);
+            color: var(--text-soft);
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 10px;
+            border-radius: 22px;
+            padding: 20px 18px 18px;
+            background: radial-gradient(circle at 0 0, rgba(249, 115, 22, 0.12), rgba(15, 23, 42, 0.98));
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .hero-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 6px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 24px;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .hero-text {
+            font-size: 13px;
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .hero-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-soft);
+            margin-top: 6px;
+        }
+
+        .hero-metric-pill {
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+        }
+
+        .hero-actions {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            color: #0b1120;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(251, 146, 60, 0.65);
+        }
+
+        .btn-secondary {
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            background: rgba(15, 23, 42, 0.95);
+            color: var(--text-soft);
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* SECTION */
+        .section {
+            margin-top: 28px;
+        }
+
+        .section-header {
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 4px;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-soft);
+        }
+
+        /* METHODS */
+        .methods-grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        @media (min-width: 820px) {
+            .methods-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        .method-card {
+            border-radius: var(--radius-lg);
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            padding: 12px 12px 10px;
+        }
+
+        .method-label {
+            font-size: 11px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 4px;
+        }
+
+        .method-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .method-text {
+            font-size: 12px;
+            color: var(--text-soft);
+            line-height: 1.6;
+            margin-bottom: 6px;
+        }
+
+        .method-list {
+            margin: 6px 0;
+            padding-left: 16px;
+            font-size: 12px;
+            color: var(--text-soft);
+        }
+
+        .method-list li {
+            margin-bottom: 3px;
+        }
+
+        .method-link {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 12px;
+            color: #fed7aa;
+        }
+
+        /* RESOURCES */
+        .resources-card {
+            border-radius: var(--radius-lg);
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            padding: 14px 14px 12px;
+        }
+
+        .resources-text {
+            font-size: 13px;
+            color: var(--text-soft);
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .resources-layout {
+            display: grid;
+            gap: 10px;
+        }
+
+        @media (min-width: 780px) {
+            .resources-layout {
+                grid-template-columns: minmax(0, 2.2fr) minmax(0, 2fr);
+            }
+        }
+
+        .resources-list-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .resources-list {
+            font-size: 12px;
+            color: var(--text-soft);
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .resources-list li {
+            margin-bottom: 4px;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 24px;
+            font-size: 11px;
+            color: var(--text-faint);
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        // Language switch
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentLang = 'en';
+            const stored = localStorage.getItem('decisionlab_lang');
+            if (!stored) {
+                localStorage.setItem('decisionlab_lang', currentLang);
+            }
+
+            document.querySelectorAll('[data-lang-target]').forEach(function (el) {
+                el.addEventListener('click', function () {
+                    const target = el.getAttribute('data-lang-target');
+                    localStorage.setItem('decisionlab_lang', target);
+                    if (target === 'en') {
+                        window.location.href = '/decisionlab/en/';
+                    } else {
+                        window.location.href = '/decisionlab/id/';
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="nav-shell">
+    <header class="nav">
+        <div class="nav-left">
+            <a href="/decisionlab/en/#top" class="brand-badge" aria-label="Decision Lab">
+                DL
+            </a>
+            <div class="brand-text">
+                <div class="brand-name">Decision Lab</div>
+                <div class="brand-sub">MCDM Learning Hub</div>
+            </div>
+        </div>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="/decisionlab/en/#methods" class="nav-link"><span>Methods</span></a>
+            <a href="/decisionlab/en/#resources" class="nav-link"><span>Learning Resources</span></a>
+        </nav>
+        <div class="nav-right">
+            <a href="/" class="nav-main-link">Main Site</a>
+            <div class="lang-switch" aria-label="Language selection">
+                <button class="lang-pill" data-lang-target="id">ID</button>
+                <button class="lang-pill active" data-lang-target="en">EN</button>
+            </div>
+        </div>
+    </header>
+</div>
+
+<main class="page" id="top">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-eyebrow">MCDM Learning Laboratory</div>
+        <h1 class="hero-title" id="hero-heading">Master Multi-Criteria Decision Making (MCDM)</h1>
+        <p class="hero-subtitle">
+            Structured guides, methods, and resources to support better decision-making in business and information systems.
+        </p>
+        <p class="hero-text">
+            Decision Lab provides structured learning materials for multi-criteria decision making,
+            from foundational concepts to practical applications using methods such as AHP, TOPSIS, and SAW.
+        </p>
+        <p class="hero-text">
+            This laboratory is designed for students, researchers, and practitioners who want to apply
+            decision support and analytical techniques to real-world decision problems.
+        </p>
+        <div class="hero-metrics">
+            <span class="hero-metric-pill">5+ MCDM methods (planned)</span>
+            <span class="hero-metric-pill">10+ case studies (in development)</span>
+            <span class="hero-metric-pill">Free access · 24/7</span>
+        </div>
+        <div class="hero-actions">
+            <a href="#methods" class="btn-primary">Explore MCDM Methods</a>
+            <a href="/" class="btn-secondary">Back to Main Site</a>
+        </div>
+    </section>
+
+    <!-- METHODS -->
+    <section class="section" id="methods" aria-labelledby="methods-heading">
+        <div class="section-header">
+            <h2 class="section-title" id="methods-heading">MCDM Methods</h2>
+            <p class="section-subtitle">
+                Start with the method that best matches your familiarity and the complexity of your decision problem.
+                Each method will be documented with an overview, step-by-step procedure, numerical example,
+                and implementation notes.
+            </p>
+        </div>
+
+        <div class="methods-grid">
+            <!-- AHP -->
+            <article class="method-card">
+                <div class="method-label">Recommended starting point</div>
+                <h3 class="method-title">Analytic Hierarchy Process (AHP)</h3>
+                <p class="method-text">
+                    A hierarchical, pairwise comparison-based method for deriving criteria weights and ranking
+                    alternatives, with consistency checking.
+                </p>
+                <ul class="method-list">
+                    <li>Suitable for strategic decisions with qualitative and quantitative criteria.</li>
+                    <li>Uses pairwise comparisons and consistency ratios.</li>
+                    <li>Widely used in project selection, vendor evaluation, and priority setting.</li>
+                </ul>
+                <a href="#methods" class="method-link">Learn AHP →</a>
+            </article>
+
+            <!-- TOPSIS -->
+            <article class="method-card">
+                <div class="method-label">Ranking-focused</div>
+                <h3 class="method-title">TOPSIS</h3>
+                <p class="method-text">
+                    Technique for Order Preference by Similarity to Ideal Solution, ranking alternatives
+                    based on their distance to ideal and anti-ideal solutions.
+                </p>
+                <ul class="method-list">
+                    <li>Effective for ranking alternatives with measurable performance scores.</li>
+                    <li>Uses normalization, weighting, and distance to ideal solutions.</li>
+                    <li>Popular for supplier selection, location selection, and performance evaluation.</li>
+                </ul>
+                <a href="#methods" class="method-link">Learn TOPSIS →</a>
+            </article>
+
+            <!-- SAW -->
+            <article class="method-card">
+                <div class="method-label">Beginner-friendly</div>
+                <h3 class="method-title">Simple Additive Weighting (SAW)</h3>
+                <p class="method-text">
+                    A weighted sum method that evaluates and ranks alternatives using normalized scores
+                    and predefined weights.
+                </p>
+                <ul class="method-list">
+                    <li>A good entry point for those new to MCDM.</li>
+                    <li>Conceptually simple and easy to implement in Excel or spreadsheets.</li>
+                    <li>Useful for everyday multi-criteria decisions.</li>
+                </ul>
+                <a href="#methods" class="method-link">Learn SAW →</a>
+            </article>
+        </div>
+
+        <p class="section-subtitle" style="margin-top: 10px;">
+            Additional methods such as PROMETHEE, VIKOR, and others are planned to be added as Decision Lab evolves.
+        </p>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="section" id="resources" aria-labelledby="resources-heading">
+        <div class="section-header">
+            <h2 class="section-title" id="resources-heading">Learning Resources</h2>
+            <p class="section-subtitle">
+                Learning materials are designed to provide a solid conceptual understanding of each MCDM method,
+                supported by follow-along numerical examples and practical implementation guidance.
+            </p>
+        </div>
+        <article class="resources-card">
+            <p class="resources-text">
+                The primary focus of Decision Lab is on conceptual clarity and practical application,
+                with examples that are relevant to business and information systems contexts.
+            </p>
+            <div class="resources-layout">
+                <div>
+                    <div class="resources-list-title">Learning formats</div>
+                    <ul class="resources-list">
+                        <li>Step-by-step guides with conceptual explanations.</li>
+                        <li>Fully worked numerical examples.</li>
+                        <li>Implementation templates and worksheets.</li>
+                        <li>Case studies from real-world applications.</li>
+                        <li>References to key academic literature.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="resources-list-title">Alignment with teaching</div>
+                    <ul class="resources-list">
+                        <li>Supports Decision Support Systems and MCDM-related course topics.</li>
+                        <li>Can be used as supplementary material for student assignments and projects.</li>
+                        <li>Integrated with the broader learning ecosystem on the main site.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <footer class="footer">
+        © <span id="year"></span> Denny JC Sihombing · Decision Lab – MCDM Learning Hub.<br>
+        Part of the academic and teaching activities of the Information Systems Study Program, Atma Jaya Catholic University.
+    </footer>
+</main>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
