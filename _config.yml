@@ -2,3 +2,5 @@ title: "Decision Lab - MCDM Learning Hub"
 baseurl: "/decisionlab"
 url: "https://dsihombing.github.io"
 
+
+include: ["en", "id"]
